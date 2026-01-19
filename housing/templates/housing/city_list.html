@@ -1,0 +1,11 @@
+<h1>Choose a City</h1>
+
+<ul>
+  {% for c in cities %}
+    <li>
+      <a href="{% url 'house_list' c.id %}">{{ c.name }}</a>
+    </li>
+  {% empty %}
+    <li>No cities found.</li>
+  {% endfor %}
+</ul>

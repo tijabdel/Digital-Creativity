@@ -1,0 +1,16 @@
+<h1>Available Rooms — {{ house.name }}</h1>
+
+<ul>
+  {% for r in rooms %}
+    <li>
+      Room {{ r.number }} | Floor {{ r.floor }} | {{ r.get_room_type_display }} |
+      Price: {{ r.monthly_price }} DH |
+     Free places: {{ r.available_places }}
+      — <a href="{% url 'book_room' r.id %}">Book</a>
+    </li>
+  {% empty %}
+    <li>No available rooms in this house.</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{% url 'house_list' house.city.id %}">⬅ Back to houses</a></p>

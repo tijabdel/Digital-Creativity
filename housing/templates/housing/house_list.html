@@ -1,0 +1,13 @@
+<h1>Student Houses in {{ city.name }}</h1>
+
+<ul>
+  {% for h in houses %}
+    <li>
+      <a href="{% url 'available_rooms' h.id %}">{{ h.name }}</a>
+    </li>
+  {% empty %}
+    <li>No student houses found for this city.</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{% url 'city_list' %}">⬅ Back to cities</a></p>
