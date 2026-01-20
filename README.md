@@ -50,11 +50,13 @@ Administrators can manage cities, houses, rooms, and reservation requests.
 
 ### 1. Clone the repository
 git clone https://github.com/tijabdel/Digital-Creativity.git
+
 cd Digital-Creativity
 
 
 ### 2. Create virtual environment
 python -m venv .venv
+
 .venv\Scripts\activate
 
 
