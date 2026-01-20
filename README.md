@@ -50,7 +50,6 @@ Administrators can manage cities, houses, rooms, and reservation requests.
 
 ### 1. Clone the repository
 git clone https://github.com/tijabdel/Digital-Creativity.git
-
 cd Digital-Creativity
 
 
@@ -58,33 +57,40 @@ cd Digital-Creativity
 python -m venv .venv
 .venv\Scripts\activate
 
+
 ### 3. Install dependencies
 pip install -r requirements.txt
+
 
 ### 4. Apply migrations
 python manage.py migrate
 
-### 5. Create admin account
+
+### 5. Seed initial data 
+python manage.py seed
+
+
+This command will automatically create:
+- Cities
+- Student houses
+- Rooms
+
+### 6. Create admin account
 python manage.py createsuperuser
 
 
-### 6. Run the server
+### 7. Run the server
 python manage.py runserver
 
 
 Open in browser:
-
-
 http://127.0.0.1:8000/
 
 
 Admin panel:
-
-
 http://127.0.0.1:8000/admin/
 
 
----
 
 ##  Project Structure
 
