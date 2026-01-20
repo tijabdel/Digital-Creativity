@@ -1,10 +1,6 @@
-# Digital-Creativity
-
-# Digital-Creativity
-
 # Student Housing Platform 
 
-Web platform developed with **Django** for managing student housing in Morocco.
+Web platform developed with **Django** for managing student housing .
 
 The application allows students to search for student houses, view available rooms, and send booking requests.  
 Administrators can manage cities, houses, rooms, and reservation requests.
