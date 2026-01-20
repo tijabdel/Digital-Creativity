@@ -1,7 +1,3 @@
-# Digital-Creativity
-
-# Digital-Creativity
-
 # Student Housing Platform 
 
 Web platform developed with **Django** for managing student housing .
