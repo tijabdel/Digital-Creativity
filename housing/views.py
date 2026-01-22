@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import F
 from django.contrib.auth.decorators import login_required
 
@@ -18,10 +18,10 @@ def house_list(request, city_id):
 
 def available_rooms(request, house_id):
     house = get_object_or_404(StudentHouse, pk=house_id)
-    rooms = (
-        Room.objects.filter(house=house, occupied_places__lt=F("capacity"))
-        .order_by("floor", "number")
-    )
+    rooms = Room.objects.filter(
+        house=house,
+        occupied_places__lt=F("capacity")
+    ).order_by("floor", "number")
     return render(request, "housing/available_rooms.html", {"house": house, "rooms": rooms})
 
 
@@ -38,13 +38,19 @@ def book_room(request, room_id):
             check_in=check_in,
             status="pending",
         )
+        return render(request, "housing/book_result.html", {"msg": "Request sent ✅ (pending)"})
+
+    return render(request, "housing/book_form.html", {"room": room})
+
 
 def room_search(request):
     """
     Search available rooms with filters:
     city, house, room_type, floor, max_price
     """
-    rooms = Room.objects.filter(occupied_places__lt=F("capacity")).select_related("house", "house__city")
+    rooms = Room.objects.filter(
+        occupied_places__lt=F("capacity")
+    ).select_related("house", "house__city")
 
     city_id = request.GET.get("city")
     house_id = request.GET.get("house")
@@ -82,5 +88,3 @@ def room_search(request):
         }
     }
     return render(request, "housing/room_search.html", context)
-    return render(request, "housing/book_result.html", {"msg": "Request sent ✅ (pending)"})
-    return render(request, "housing/book_form.html", {"room": room})
