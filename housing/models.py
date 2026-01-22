@@ -22,9 +22,7 @@ class Room(models.Model):
     ROOM_TYPE = [
         ("studio", "Studio individuel"),
         ("double", "Chambre double"),
-        
     ]
-    
 
     house = models.ForeignKey(StudentHouse, on_delete=models.CASCADE, related_name="rooms")
     number = models.CharField(max_length=20)
@@ -40,9 +38,17 @@ class Room(models.Model):
     @property
     def is_available(self):
         return self.occupied_places < self.capacity
+    
     def available_places(self):
         return self.capacity - self.occupied_places
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["house", "number"],
+                name="unique_room_number_per_house"
+            ),
+        ]
 
 class BookingRequest(models.Model):
     STATUS = [
