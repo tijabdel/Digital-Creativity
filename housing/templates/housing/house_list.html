@@ -1,4 +1,6 @@
 <h1>Student Houses in {{ city.name }}</h1>
+<p><a href="{% url 'room_search' %}">🔎 Search Rooms</a></p>
+
 
 <ul>
   {% for h in houses %}

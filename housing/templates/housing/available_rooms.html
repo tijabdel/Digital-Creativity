@@ -1,4 +1,6 @@
 <h1>Available Rooms — {{ house.name }}</h1>
+<p><a href="{% url 'room_search' %}?house={{ house.id }}">🔎 Search Rooms in this House</a></p>
+
 
 <ul>
   {% for r in rooms %}
