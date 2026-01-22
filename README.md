@@ -1,6 +1,6 @@
-# Student Housing Platform 
+# Student Housing Platform
 
-Web platform developed with **Django** for managing student housing .
+Web platform developed with **Django** for managing student housing.
 
 The application allows students to search for student houses, view available rooms, and send booking requests.  
 Administrators can manage cities, houses, rooms, and reservation requests.
@@ -8,41 +8,41 @@ Administrators can manage cities, houses, rooms, and reservation requests.
 ---
 
 ##  Technologies
-- Python
-- Django
-- SQLite
-- HTML / CSS
-- Git & GitHub
+- Python  
+- Django  
+- SQLite  
+- HTML / CSS  
+- Git & GitHub  
 
 ---
 
 ##  Project Objectives
-- Develop a professional web application using Django
-- Apply MVT (Model–View–Template) architecture
-- Manage a relational database
-- Implement room availability and booking logic
-- Work collaboratively using GitHub
+- Develop a professional web application using Django  
+- Apply MVT (Model–View–Template) architecture  
+- Manage a relational database  
+- Implement room availability and booking logic  
+- Work collaboratively using GitHub  
 
 ---
 
 ##  User Roles
 
 ### Visitor
-- View cities
-- View student houses
-- View available rooms
+- View cities  
+- View student houses  
+- View available rooms  
 
 ### Student
-- Create an account
-- Log in / log out
-- Send booking requests
-- View booking status
+- Create an account  
+- Log in / log out  
+- Send booking requests  
+- View booking status  
 
 ### Administrator
-- Manage cities
-- Manage student houses
-- Manage rooms
-- Accept or reject booking requests
+- Manage cities  
+- Manage student houses  
+- Manage rooms  
+- Accept or reject booking requests  
 
 ---
 
@@ -56,39 +56,46 @@ cd Digital-Creativity
 
 ### 2. Create virtual environment
 python -m venv .venv
+
 .venv\Scripts\activate
+
 
 ### 3. Install dependencies
 pip install -r requirements.txt
 
+
 ### 4. Apply migrations
 python manage.py migrate
 
-### 5. Create admin account
+
+### 5. Seed initial data
+python manage.py seed
+
+
+This command will automatically create:
+- Cities  
+- Student houses  
+- Rooms  
+
+### 6. Create admin account
 python manage.py createsuperuser
 
 
-### 6. Run the server
+### 7. Run the server
 python manage.py runserver
 
 
 Open in browser:
-
-
 http://127.0.0.1:8000/
 
 
 Admin panel:
-
-
 http://127.0.0.1:8000/admin/
 
 
----
+
 
 ##  Project Structure
-
-
 
 Digital-Creativity/
 │
