@@ -1,0 +1,55 @@
+<h1>Search Available Rooms</h1>
+
+<form method="get">
+  <label>City:</label>
+  <select name="city">
+    <option value="">All</option>
+    {% for c in cities %}
+      <option value="{{ c.id }}" {% if selected.city == c.id|stringformat:"s" %}selected{% endif %}>
+        {{ c.name }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <label>Student House:</label>
+  <select name="house">
+    <option value="">All</option>
+    {% for h in houses %}
+      <option value="{{ h.id }}" {% if selected.house == h.id|stringformat:"s" %}selected{% endif %}>
+        {{ h.name }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <label>Type:</label>
+  <select name="type">
+    <option value="">All</option>
+    <option value="studio" {% if selected.type == "studio" %}selected{% endif %}>Studio</option>
+    <option value="double" {% if selected.type == "double" %}selected{% endif %}>Double</option>
+  </select>
+
+  <label>Floor:</label>
+  <input type="number" name="floor" value="{{ selected.floor }}" min="0">
+
+  <label>Max price (DH):</label>
+  <input type="number" name="max_price" value="{{ selected.max_price }}" min="0">
+
+  <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<ul>
+  {% for r in rooms %}
+    <li>
+      {{ r.house.city.name }} — {{ r.house.name }} —
+      Room {{ r.number }} | Floor {{ r.floor }} | {{ r.get_room_type_display }} |
+      {{ r.monthly_price }} DH | Free places: {{ r.available_places }}
+      — <a href="{% url 'book_room' r.id %}">Book</a>
+    </li>
+  {% empty %}
+    <li>No matching available rooms.</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{% url 'city_list' %}">⬅ Back home</a></p>
