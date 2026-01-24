@@ -1,15 +1,25 @@
-<h1>Student Houses in {{ city.name }}</h1>
-<p><a href="{% url 'room_search' %}">🔎 Search Rooms</a></p>
+{% extends "housing/base.html" %}
+{% load static %}
 
+{% block content %}
+<div style="padding: 2rem 0;">
+    <h1>Available <span class="text-gradient">Houses</span></h1>
+</div>
 
-<ul>
-  {% for h in houses %}
-    <li>
-      <a href="{% url 'available_rooms' h.id %}">{{ h.name }}</a>
-    </li>
-  {% empty %}
-    <li>No student houses found for this city.</li>
-  {% endfor %}
-</ul>
-
-<p><a href="{% url 'city_list' %}">⬅ Back to cities</a></p>
+<div class="grid-container">
+    {% for house in houses %}
+    <div class="card">
+        <img src="{% static 'housing/images/houses/' %}house_{{ house.id }}.jpg" 
+             onerror="this.src='https://source.unsplash.com/featured/?mansion,house'"
+             class="card-img" alt="House">
+        <h3>{{ house.name }}</h3>
+        <p><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> {{ house.address }}</p>
+        <div style="margin: 1rem 0; font-size: 0.9rem; display:flex; gap:1rem; opacity:0.8;">
+            <span><i class="fa-solid fa-bed"></i> 3 Rooms</span>
+            <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+        </div>
+        <a href="{% url 'available_rooms' house.id %}" class="btn-primary" style="display:block; text-align:center; text-decoration:none;">View Rooms</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
