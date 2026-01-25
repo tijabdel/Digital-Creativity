@@ -4,18 +4,18 @@ from django.contrib.auth.decorators import login_required
 
 from .models import City, StudentHouse, Room, BookingRequest
 
-
+@login_required
 def city_list(request):
     cities = City.objects.all().order_by("name")
     return render(request, "housing/city_list.html", {"cities": cities})
 
-
+@login_required
 def house_list(request, city_id):
     city = get_object_or_404(City, pk=city_id)
     houses = StudentHouse.objects.filter(city=city).order_by("name")
     return render(request, "housing/house_list.html", {"city": city, "houses": houses})
 
-
+@login_required
 def available_rooms(request, house_id):
     house = get_object_or_404(StudentHouse, pk=house_id)
     rooms = Room.objects.filter(
@@ -42,7 +42,7 @@ def book_room(request, room_id):
 
     return render(request, "housing/book_form.html", {"room": room})
 
-
+@login_required
 def room_search(request):
     """
     Search available rooms with filters:
