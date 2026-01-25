@@ -1,18 +1,33 @@
-<h1>Available Rooms — {{ house.name }}</h1>
-<p><a href="{% url 'room_search' %}?house={{ house.id }}">🔎 Search Rooms in this House</a></p>
+{% extends "housing/base.html" %}
+{% load static %}
 
+{% block content %}
+<div class="detail-wrapper">
+    <div class="detail-main">
+        <div class="glass-panel">
+            <h1 class="text-gradient">{{ house.name }}</h1>
+            <p style="margin-bottom: 1.5rem;">{{ house.description }}</p>
+            
+            <div class="image-grid-sm" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+                <img src="https://source.unsplash.com/featured/?interior,1" style="width:100%; border-radius:15px;">
+                <img src="https://source.unsplash.com/featured/?interior,2" style="width:100%; border-radius:15px;">
+            </div>
+        </div>
+    </div>
 
-<ul>
-  {% for r in rooms %}
-    <li>
-      Room {{ r.number }} | Floor {{ r.floor }} | {{ r.get_room_type_display }} |
-      Price: {{ r.monthly_price }} DH |
-     Free places: {{ r.available_places }}
-      — <a href="{% url 'book_room' r.id %}">Book</a>
-    </li>
-  {% empty %}
-    <li>No available rooms in this house.</li>
-  {% endfor %}
-</ul>
-
-<p><a href="{% url 'house_list' house.city.id %}">⬅ Back to houses</a></p>
+    <aside class="detail-sidebar">
+        <div class="glass-panel">
+            <h3 style="color:var(--success)">Reserve a Room</h3>
+            <hr style="border:0; border-top:1px solid var(--glass-border); margin:1rem 0;">
+            <form>
+                <label>Select Room Type</label>
+                <select style="width:100%; padding:0.8rem; background:rgba(0,0,0,0.3); color:white; border-radius:8px; border:1px solid var(--glass-border); margin:0.5rem 0 1rem 0;">
+                    <option>Master Bedroom ($500)</option>
+                    <option>Standard Room ($350)</option>
+                </select>
+                <button type="button" class="btn-primary" style="width:100%">Book Now</button>
+            </form>
+        </div>
+    </aside>
+</div>
+{% endblock %}

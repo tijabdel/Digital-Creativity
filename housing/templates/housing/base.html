@@ -1,4 +1,5 @@
 {% load static %}
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -65,5 +66,40 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'housing/js/app.js' %}"></script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Creativity | Premium Housing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'housing/css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">DIGITAL<span>CREATIVITY</span></div>
+        <ul class="nav-links">
+            <li><a href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/cities"><i class="fa-solid fa-city"></i> Cities</a></li>
+            <li><a href="/search"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+        </ul>
+        <div class="nav-auth">
+            <button class="btn-primary">Get Started</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Digital Creativity. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'housing/js/main.js' %}"></script>
+>>>>>>> ad582863658eb2c70e8ec23da6d7562c6bbfe25b
 </body>
 </html>

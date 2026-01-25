@@ -1,13 +1,22 @@
-<h1>Choose a City</h1>
-<p><a href="{% url 'room_search' %}">🔎 Search Rooms</a></p>
+{% extends "housing/base.html" %}
+{% load static %}
 
+{% block content %}
+<header style="text-align: center; padding: 4rem 0;">
+    <h1 class="text-gradient" style="font-size: 3rem;">Explore Cities</h1>
+    <p>Find your perfect home in the best neighborhoods.</p>
+</header>
 
-<ul>
-  {% for c in cities %}
-    <li>
-      <a href="{% url 'house_list' c.id %}">{{ c.name }}</a>
-    </li>
-  {% empty %}
-    <li>No cities found.</li>
-  {% endfor %}
-</ul>
+<div class="grid-container">
+    {% for city in cities %}
+    <div class="card">
+        <img src="{% static 'housing/images/cities/' %}{{ city.name|lower }}.jpg" 
+             onerror="this.src='https://source.unsplash.com/featured/?city,{{ city.name }}'" 
+             class="card-img" alt="{{ city.name }}">
+        <h2>{{ city.name }}</h2>
+        <p style="margin: 1rem 0; opacity: 0.7;">View the best houses available in {{ city.name }}.</p>
+        <a href="{% url 'house_list' city.id %}" class="btn-primary" style="display:inline-block; text-decoration:none;">Explore Houses</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
