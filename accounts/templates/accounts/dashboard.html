@@ -1,60 +1,29 @@
 {% extends "housing/base.html" %}
 {% block title %}Dashboard • Student Housing{% endblock %}
-{% block hero_title %}Dashboard{% endblock %}
-{% block hero_subtitle %}Track your booking requests and their status.{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <div>
-    <h5 class="mb-0">Welcome, {{ request.user.username }} 👋</h5>
-    <small class="text-muted">Your booking history is shown below.</small>
-  </div>
-  <div class="d-flex gap-2">
-    <a class="btn btn-primary btn-sm" href="{% url 'room_search' %}">Search rooms</a>
-    <a class="btn btn-outline-dark btn-sm" href="{% url 'logout' %}">Logout</a>
-  </div>
+<h1>Dashboard</h1>
+<p>Welcome, <strong>{{ request.user.username }}</strong>.</p>
+
+<div class="actions">
+  <a class="btn" href="{% url 'city_list' %}">Browse Cities</a>
+  <a class="btn btn--ghost" href="{% url 'room_search' %}">Search Rooms</a>
+  {% if request.user.is_staff %}
+    <a class="btn btn--ghost" href="/admin/">Admin Panel</a>
+  {% endif %}
 </div>
 
-<div class="card p-3">
-  <h6 class="mb-3">My booking requests</h6>
+<h3>Your booking requests</h3>
 
-  <div class="table-responsive">
-    <table class="table align-middle mb-0">
-      <thead>
-        <tr>
-          <th>City</th>
-          <th>House</th>
-          <th>Room</th>
-          <th>Check-in</th>
-          <th>Status</th>
-          <th>Created</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for br in requests %}
-          <tr>
-            <td>{{ br.room.house.city.name }}</td>
-            <td>{{ br.room.house.name }}</td>
-            <td class="fw-semibold">{{ br.room.number }}</td>
-            <td>{{ br.check_in }}</td>
-            <td>
-              <span class="badge
-                {% if br.status == 'accepted' %} bg-success
-                {% elif br.status == 'rejected' %} bg-danger
-                {% else %} bg-warning text-dark {% endif %}
-              ">
-                {{ br.get_status_display }}
-              </span>
-            </td>
-            <td class="text-muted">{{ br.created_at|date:"Y-m-d H:i" }}</td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="6" class="text-muted">No booking requests yet.</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+<ul class="card-list">
+  {% for r in requests %}
+    <li class="card">
+      <div><strong>{{ r.room.house.name }}</strong> — {{ r.room.house.city.name }}</div>
+      <div>Room {{ r.room.number }} | Floor {{ r.room.floor }} | Type: {{ r.room.get_room_type_display }}</div>
+      <div>Status: <strong>{{ r.get_status_display }}</strong> | Check-in: {{ r.check_in }}</div>
+    </li>
+  {% empty %}
+    <li class="card">No booking requests yet.</li>
+  {% endfor %}
+</ul>
 {% endblock %}
