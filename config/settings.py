@@ -87,3 +87,5 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = False
 
 # Password rules strict
+
+X_FRAME_OPTIONS = 'DENY'
