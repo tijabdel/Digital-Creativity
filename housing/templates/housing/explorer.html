@@ -1,81 +1,75 @@
 ﻿{% extends 'base.html' %}
 {% block content %}
-<div style="display: flex; height: calc(100vh - 72px);">
-    <div class="sidebar" style="width: 320px; overflow-y: auto;">
-        <h3 style="margin-bottom: 20px; font-size: 18px;">🎯 Filtrer ma recherche</h3>
-        <form method="GET" action="{% url 'explorer' %}">
-            
-            <label class="filter-label">Ville</label>
-            <select name="city" class="form-control">
-                <option value="All">Tout le Maroc</option>
-                <option value="Rabat" {% if selected_city == 'Rabat' %}selected{% endif %}>Rabat</option>
-                <option value="Casablanca" {% if selected_city == 'Casablanca' %}selected{% endif %}>Casablanca</option>
-                <option value="Tanger" {% if selected_city == 'Tanger' %}selected{% endif %}>Tanger</option>
-                <option value="Ifrane" {% if selected_city == 'Ifrane' %}selected{% endif %}>Ifrane</option>
-            </select>
-
-            <label class="filter-label">Genre</label>
-            <select name="gender" class="form-control">
-                <option value="All">Tous</option>
-                <option value="Filles" {% if selected_gender == 'Filles' %}selected{% endif %}>Filles Uniquement</option>
-                <option value="Garçons" {% if selected_gender == 'Garçons' %}selected{% endif %}>Garçons Uniquement</option>
-            </select>
-
-            <label class="filter-label">Budget (DH)</label>
-            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
-                <input type="number" name="min_price" placeholder="Min" value="{{ min_val }}" class="form-control" style="margin:0; width: 48%;">
-                <span style="color:#aaa;">-</span>
-                <input type="number" name="max_price" placeholder="Max" value="{{ max_val }}" class="form-control" style="margin:0; width: 48%;">
+<div class='container mt-4'>
+    <div class='card p-4 mb-5 shadow-sm border-0' style='border-radius: 15px; background: white;'>
+        <form method='GET' class='row g-3 align-items-end'>
+            <div class='col-md-4'>
+                <label class='form-label fw-bold text-muted small'>VILLE</label>
+                <div class='input-group'>
+                    <span class='input-group-text bg-light border-0'><i class='fas fa-map-marker-alt text-primary'></i></span>
+                    <input type='text' name='city' class='form-control bg-light border-0' placeholder='Ex: Tanger, Boukhalef' value='{{ current_city }}'>
+                </div>
             </div>
-            <small style="color: #718096; font-size: 11px;">Ex: Entre 1000 et 3000 DH</small>
-
-            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Appliquer les filtres</button>
+            <div class='col-md-3'>
+                <label class='form-label fw-bold text-muted small'>TYPE</label>
+                <select name='type' class='form-select bg-light border-0'>
+                    <option value=''>Tout voir</option>
+                    <option value='Residence' {% if current_type == 'Residence' %}selected{% endif %}>🏢 Résidences Étudiantes</option>
+                    <option value='Colocation' {% if current_type == 'Colocation' %}selected{% endif %}>🤝 Colocation</option>
+                    <option value='Chambre' {% if current_type == 'Chambre' %}selected{% endif %}>🛏️ Chambre seule</option>
+                    <option value='Studio' {% if current_type == 'Studio' %}selected{% endif %}>🏠 Studio</option>
+                </select>
+            </div>
+            <div class='col-md-3'>
+                <label class='form-label fw-bold text-muted small'>MAX PRIX (DH)</label>
+                <div class='input-group'>
+                    <input type='number' name='max_price' class='form-control bg-light border-0' placeholder='Ex: 1500' value='{{ current_max }}'>
+                    <span class='input-group-text bg-light border-0'>DH</span>
+                </div>
+            </div>
+            <div class='col-md-2'>
+                <button type='submit' class='btn btn-primary w-100 py-2 rounded-pill fw-bold shadow-sm'>
+                    <i class='fas fa-filter'></i> Filtrer
+                </button>
+            </div>
         </form>
     </div>
 
-    <div style="flex: 1; padding: 30px; overflow-y: auto; background: #f7f9fc;">
-        <div id="map" style="height: 300px; width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></div>
-        
-        <h3 style="margin-bottom: 20px;">{{ listings.count }} Résultats trouvés</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
-            {% for l in listings %}
-            <div class="listing-card">
-                <div class="card-img" style="background-image: url('{{ l.image_url }}');">
-                    <span class="badge-type">{{ l.type }}</span>
-                    {% if l.is_verified %}
-                        <span style="position: absolute; top: 12px; right: 12px; background: #38b2ac; color: white; font-size: 10px; padding: 4px 8px; border-radius: 20px; font-weight: bold;">✓ VÉRIFIÉ</span>
+    <h5 class='mb-3 fw-bold ps-2 border-start border-4 border-primary'>&nbsp; {{ listings.count }} Offres disponibles</h5>
+    <div class='row'>
+        {% for listing in listings %}
+        <div class='col-md-4 mb-4'>
+            <div class='card h-100 border-0 shadow-sm hover-card'>
+                <div class='position-relative'>
+                    <img src='{{ listing.image_url }}' class='card-img-top' style='height: 200px; object-fit: cover; border-radius: 12px 12px 0 0;' alt='Logement'>
+                    <span class='position-absolute top-0 end-0 bg-white px-3 py-1 m-2 rounded-pill fw-bold text-primary shadow-sm'>
+                        {{ listing.price }} DH
+                    </span>
+                    {% if listing.type == 'Residence' %}
+                        <span class='position-absolute top-0 start-0 bg-warning text-dark px-2 py-1 m-2 rounded fw-bold small shadow-sm'>
+                            <i class='fas fa-university'></i> Résidence
+                        </span>
+                    {% else %}
+                        <span class='position-absolute bottom-0 start-0 bg-dark text-white px-2 py-1 m-2 rounded small opacity-75'>
+                            {{ listing.type }}
+                        </span>
                     {% endif %}
                 </div>
-                <div style="padding: 16px;">
-                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">{{ l.title }}</h3>
-                    <p class="text-muted" style="margin: 0;">📍 {{ l.city }}</p>
-                    <hr style="border: 0; border-top: 1px solid #edf2f7; margin: 12px 0;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="price" style="font-size: 18px;">{{ l.price }} DH</span>
-                        <a href="{% url 'listing_detail' l.id %}" style="color: #bc13fe; font-weight: 600; font-size: 14px; text-decoration: none;">Voir →</a>
-                    </div>
+                <div class='card-body'>
+                    <h5 class='card-title fw-bold text-dark'>{{ listing.title }}</h5>
+                    <p class='text-muted small mb-2'><i class='fas fa-map-pin'></i> {{ listing.city }} • {{ listing.university_nearby }}</p>
+                    <a href='/listing/{{ listing.id }}/' class='stretched-link'></a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% empty %}
+        <div class='col-12 text-center py-5'>
+            <img src='https://cdn-icons-png.flaticon.com/512/6134/6134065.png' width='100' class='mb-3 opacity-50'>
+            <h4>Aucun logement trouvé...</h4>
+            <p>Essayez d'augmenter votre budget ou de changer de ville.</p>
+        </div>
+        {% endfor %}
     </div>
 </div>
-
-<script>
-    var map = L.map('map').setView([33.5731, -7.5898], 6);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
-    var data = {{ map_data|safe }};
-    data.forEach(h => {
-        L.circleMarker([h.lat, h.lng], { radius: 8, color: 'white', weight: 2, fillColor: h.verified ? '#38b2ac' : '#bc13fe', fillOpacity: 0.9 })
-         .addTo(map).bindPopup('<b>'+h.title+'</b><br>'+h.price+' DH');
-    });
-</script>
-<style>.filter-label { font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 15px; display:block; margin-bottom: 5px; }</style>
+<style>.hover-card:hover { transform: translateY(-5px); transition: 0.3s; }</style>
 {% endblock %}
-
-
-
-<script>// console.log('map loaded');</script>
-
-
-

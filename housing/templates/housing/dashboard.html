@@ -1,55 +1,78 @@
 ﻿{% extends 'base.html' %}
 {% block content %}
-<div style="padding: 40px; max-width: 1200px; margin: 0 auto;">
-    <div class="quest-header" style="display:flex; justify-content:space-between; align-items:center;">
+<div class='container mt-5'>
+    <div class='d-flex justify-content-between align-items-center mb-4'>
         <div>
-            <div class="quest-title">ESPACE PERSONNEL // <span class="quest-user">{{ user|upper }}</span></div>
-            <div style="color: #666; font-size: 14px;">Membre vérifié • Étudiant</div>
+            <h2 class='fw-bold'>Bienvenue, {{ user.username }} 👋</h2>
+            <p class='text-muted'>Gérez vos annonces et vos demandes ici.</p>
         </div>
-        <a href="{% url 'add_listing' %}" style="background: #bc13fe; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; box-shadow: 0 0 15px rgba(188,19,254,0.4);">
-            + PUBLIER UNE ANNONCE
+        <a href='/publish/' class='btn btn-primary btn-lg rounded-pill shadow-sm'>
+            <i class='fas fa-plus-circle'></i> Publier une annonce
         </a>
     </div>
 
-    <div class="section-title" style="margin-top: 40px; color: #00f2ea; border-bottom: 1px solid #333; padding-bottom: 10px;">
-        📌 MES RÉSERVATIONS EN COURS
-    </div>
-    {% if bookings %}
-        <div style="display: grid; gap: 15px; margin-top: 20px;">
-        {% for b in bookings %}
-            <div style="background: #111; border-left: 4px solid #00f2ea; padding: 20px; display: flex; align-items: center; justify-content: space-between;">
-                <div>
-                    <h3 style="margin: 0; color: white;">{{ b.listing.title }}</h3>
-                    <p style="color: #888; margin: 5px 0;">{{ b.listing.city }} • {{ b.listing.price }} DH</p>
+    <div class='row'>
+        <div class='col-md-7'>
+            <div class='card border-0 shadow-sm mb-4'>
+                <div class='card-header bg-white border-0 py-3'>
+                    <h5 class='mb-0 text-primary fw-bold'><i class='fas fa-home'></i> Mes Annonces en ligne</h5>
                 </div>
-                <span style="background: rgba(0, 242, 234, 0.2); color: #00f2ea; padding: 5px 10px; border-radius: 4px; font-size: 12px;">{{ b.status }}</span>
+                <div class='card-body'>
+                    {% if listings %}
+                        <div class='list-group list-group-flush'>
+                            {% for list in listings %}
+                            <div class='list-group-item d-flex justify-content-between align-items-center py-3'>
+                                <div class='d-flex align-items-center'>
+                                    <div class='bg-light rounded d-flex align-items-center justify-content-center me-3' style='width: 50px; height: 50px;'>
+                                        <i class='fas fa-building text-secondary'></i>
+                                    </div>
+                                    <div>
+                                        <h6 class='mb-0 fw-bold'>{{ list.title }}</h6>
+                                        <small class='text-muted'>{{ list.city }} • {{ list.price }} DH</small>
+                                    </div>
+                                </div>
+                                <span class='badge bg-success rounded-pill'>Actif</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class='text-center py-4'>
+                            <img src='https://cdn-icons-png.flaticon.com/512/7486/7486744.png' width='60' class='mb-3 opacity-50' alt='Vide'>
+                            <p class='text-muted mb-3'>Vous n'avez publié aucune annonce.</p>
+                            <a href='/publish/' class='btn btn-outline-primary rounded-pill btn-sm'>Commencer maintenant</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        {% endfor %}
         </div>
-    {% else %}
-        <p style="color: #666; font-style: italic; margin-top: 15px;">Aucune réservation active.</p>
-    {% endif %}
 
-    <div class="section-title" style="margin-top: 50px; color: #bc13fe; border-bottom: 1px solid #333; padding-bottom: 10px;">
-        📢 MES ANNONCES PUBLIÉES
-    </div>
-    {% if my_listings %}
-        <div style="display: grid; gap: 15px; margin-top: 20px;">
-        {% for l in my_listings %}
-            <div style="background: #111; border-left: 4px solid #bc13fe; padding: 20px;">
-                <h3 style="margin: 0; color: white;">{{ l.title }}</h3>
-                <p style="color: #888;">{{ l.price }} DH • {{ l.gender_preference }}</p>
-                <div style="font-size: 11px; color: #666; margin-top: 5px;">Visible par la communauté</div>
+        <div class='col-md-5'>
+            <div class='card border-0 shadow-sm'>
+                <div class='card-header bg-white border-0 py-3'>
+                    <h5 class='mb-0 text-info fw-bold'><i class='fas fa-envelope'></i> Mes Demandes envoyées</h5>
+                </div>
+                <div class='card-body'>
+                    {% if bookings %}
+                        <div class='list-group list-group-flush'>
+                            {% for book in bookings %}
+                            <div class='list-group-item py-3'>
+                                <div class='d-flex justify-content-between mb-1'>
+                                    <strong>{{ book.listing.title }}</strong>
+                                    <small class='text-muted'>{{ book.created_at|date:"d M" }}</small>
+                                </div>
+                                <p class='small text-muted mb-0 bg-light p-2 rounded fst-italic'>"{{ book.message }}"</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class='text-center py-4'>
+                            <p class='text-muted'>Aucune demande de réservation envoyée.</p>
+                            <a href='/explorer/' class='btn btn-outline-info rounded-pill btn-sm'>Explorer les logements</a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        {% endfor %}
         </div>
-    {% else %}
-        <div style="background: rgba(188,19,254,0.1); border: 1px dashed #bc13fe; padding: 30px; text-align: center; margin-top: 20px; border-radius: 10px;">
-            <p style="color: #ccc;">Tu libères ta chambre ou tu cherches un colocataire ?</p>
-            <a href="{% url 'add_listing' %}" style="color: #bc13fe; font-weight: bold;">Mets ton annonce en ligne gratuitement</a>
-        </div>
-    {% endif %}
+    </div>
 </div>
 {% endblock %}
-
-

@@ -1,10 +1,10 @@
-﻿import os
-from pathlib import Path
+﻿from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-student-project-key'
+SECRET_KEY = 'django-insecure-cle-de-secours-pour-demo'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -13,7 +13,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'leaflet',  <-- REMOVED THIS LINE TO FIX THE CRASH
     'housing',
 ]
 
@@ -32,7 +31,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'housing/templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -54,59 +53,19 @@ DATABASES = {
     }
 }
 
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
+AUTH_PASSWORD_VALIDATORS = [] # Pas de validation complexe pour la démo
 LANGUAGE_CODE = 'fr-fr'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'housing/static']
+STATICFILES_DIRS = [BASE_DIR / "housing/static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTH CONFIGURATION
-# Enforce strong passwords
-
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-# Session cookies set to HttpOnly
-
-X_FRAME_OPTIONS = 'DENY'
-# Secret key should be rotated in production
-
-SESSION_COOKIE_HTTPONLY = True
-
-# AUTH: Configuration du système d'authentification
-
-CSRF_COOKIE_SECURE = False
-
-# Password rules strict
-
-X_FRAME_OPTIONS = 'DENY'
-
-SESSION_COOKIE_HTTPONLY = True
-
-# Secret Key rotation logic ready
-
-# TEMPLATE DIRS CONFIG OPTIMIZATION
-
-# STATICFILES_FINDERS update
-
-# templates path fix
-
-# Configuration des fichiers statiques pour le déploiement
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# conflict fixed
-
-# DEMO CONFIG: Debug mode enabled for presentation
-
-LOGIN_REDIRECT_URL = 'dashboard'
-
-# security audit: OK
+# --- CORRECTION CRITIQUE DES REDIRECTIONS ---
+LOGIN_URL = 'login'              
+LOGIN_REDIRECT_URL = 'dashboard' 
+LOGOUT_REDIRECT_URL = 'index'    

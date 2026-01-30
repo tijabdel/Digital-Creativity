@@ -1,48 +1,32 @@
 ﻿{% extends 'base.html' %}
 {% block content %}
-<div class="detail-container" style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
-    <div class="glass-panel" style="background: #0f0f16; border-radius: 20px; overflow: hidden; border: 1px solid #333;">
-        <div style="height: 350px; background: url('{{ l.image_url }}') center/cover;"></div>
-        <div style="padding: 30px;">
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    <h1 style="margin: 0; color: white;">{{ l.title }}</h1>
-                    <p style="color: #aaa;">📍 {{ l.city }} (Près de {{ l.university_nearby }})</p>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 28px; font-weight: bold; color: #00f2ea;">{{ l.price }} DH<span style="font-size: 14px; color: #888;"> / mois</span></div>
-                    {% if l.is_bills_included %}<div style="font-size: 12px; color: #00ff88;">⚡ Eau & Électricité Comprises</div>{% endif %}
-                </div>
-            </div>
-            
-            <hr style="border-top: 1px solid #333; margin: 20px 0;">
-            
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
-                <div>
-                    <h4 style="color: #bc13fe;">DESCRIPTION</h4>
-                    <p style="color: #ddd; line-height: 1.6;">{{ l.description }}</p>
-                    <h4 style="color: #bc13fe;">ÉQUIPEMENTS</h4>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        {% for a in amenities %}
-                        <span style="background: #222; padding: 5px 10px; border-radius: 4px; font-size: 12px;">✅ {{ a }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-                
-                <div style="background: #151520; padding: 20px; border-radius: 10px;">
-                    <a href="https://wa.me/{{ l.whatsapp_number }}?text=Bonjour, je suis intéressé par votre annonce sur StudentHouse: {{ l.title }}" target="_blank" 
-                       style="display: block; width: 100%; padding: 12px 0; background: #25D366; color: white; text-align: center; text-decoration: none; font-weight: bold; border-radius: 5px; margin-bottom: 10px;">
-                       💬 WhatsApp Moul Dar
-                    </a>
-                    
-                    <a href="{% url 'book_listing' l.id %}" 
-                       style="display: block; width: 100%; padding: 12px 0; background: #bc13fe; color: white; text-align: center; text-decoration: none; font-weight: bold; border-radius: 5px;">
-                       RÉSERVER MAINTENANT
-                    </a>
-                </div>
+<div class='container mt-5'>
+    <div class='row'>
+        <div class='col-md-8'>
+            <img src='{{ listing.image_url }}' class='img-fluid rounded mb-4 w-100' style='max-height: 400px; object-fit: cover;'>
+            <h2>{{ listing.title }}</h2>
+            <p class='lead'>{{ listing.description }}</p>
+            <hr>
+            <ul class='list-unstyled'>
+                <li>📍 <strong>Ville :</strong> {{ listing.city }}</li>
+                <li>🎓 <strong>Proche de :</strong> {{ listing.university_nearby }}</li>
+                <li>🏠 <strong>Type :</strong> {{ listing.type }}</li>
+            </ul>
+        </div>
+        <div class='col-md-4'>
+            <div class='card p-4 shadow-sm sticky-top' style='top: 100px;'>
+                <h3 class='text-primary fw-bold text-center'>{{ listing.price }} DH</h3>
+                <a href='https://wa.me/{{ listing.whatsapp_number }}' target='_blank' class='btn btn-success w-100 my-3 rounded-pill'>
+                    <i class='fab fa-whatsapp'></i> Contacter sur WhatsApp
+                </a>
+                <form method='POST'>
+                    {% csrf_token %}
+                    <label>Ou laisser un message :</label>
+                    <textarea name='message' class='form-control mb-2' required></textarea>
+                    <button type='submit' class='btn btn-primary w-100 rounded-pill'>Envoyer</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-

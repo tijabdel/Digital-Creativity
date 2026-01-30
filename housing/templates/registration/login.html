@@ -1,2 +1,45 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div class='container d-flex justify-content-center align-items-center' style='min-height: 80vh;'>
+    <div class='card border-0 shadow-lg p-4' style='width: 400px; border-radius: 20px;'>
+        <div class='text-center mb-4'>
+            <div class='bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3' style='width: 60px; height: 60px;'>
+                <i class='fas fa-user fa-lg'></i>
+            </div>
+            <h3 class='fw-bold'>Connexion</h3>
+            <p class='text-muted small'>Accédez à votre espace StudentHouse</p>
+        </div>
 
+        <form method='POST'>
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div class='alert alert-danger small py-2'>Identifiants incorrects.</div>
+            {% endif %}
 
+            <div class='mb-3'>
+                <label class='form-label small fw-bold text-muted'>NOM D'UTILISATEUR</label>
+                {{ form.username }}
+            </div>
+            <div class='mb-4'>
+                <label class='form-label small fw-bold text-muted'>MOT DE PASSE</label>
+                {{ form.password }}
+            </div>
+
+            <button type='submit' class='btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm'>
+                Se connecter
+            </button>
+        </form>
+
+        <div class='text-center mt-4 border-top pt-3'>
+            <p class='small text-muted'>Pas encore de compte ?</p>
+            <a href='/signup/' class='btn btn-outline-dark w-100 rounded-pill btn-sm'>Créer un compte</a>
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll('input').forEach(input => {
+        input.classList.add('form-control', 'bg-light', 'border-0', 'py-2');
+    });
+</script>
+{% endblock %}

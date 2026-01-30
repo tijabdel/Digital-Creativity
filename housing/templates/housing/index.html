@@ -1,0 +1,26 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div class='hero text-center mb-5'>
+    <h1 class='fw-bold display-4'>Trouve ton logement étudiant</h1>
+    <p class='lead'>Des centaines de colocs et studios vérifiés au Maroc.</p>
+    <a href='/explorer/' class='btn btn-light btn-lg rounded-pill mt-3 text-primary fw-bold shadow'>Commencer la recherche</a>
+</div>
+<div class='container'>
+    <h3 class='fw-bold mb-4'>🔥 Top Annonces</h3>
+    <div class='row'>
+        {% for listing in listings %}
+        <div class='col-md-4 mb-4'>
+            <div class='card h-100'>
+                <img src='{{ listing.image_url }}' class='card-img-top' style='height: 200px; object-fit: cover;' alt='Logement'>
+                <div class='card-body'>
+                    <h5 class='fw-bold'>{{ listing.title }}</h5>
+                    <p class='text-primary fw-bold'>{{ listing.price }} DH <span class='text-muted small'>/mois</span></p>
+                    <p class='small text-muted'><i class='fas fa-map-marker-alt'></i> {{ listing.city }}</p>
+                    <a href='/listing/{{ listing.id }}/' class='btn btn-outline-primary w-100 rounded-pill'>Voir</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
