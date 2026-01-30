@@ -127,3 +127,5 @@ body { font-size: 15px; }
 nav { backdrop-filter: blur(5px); }
 
 :root { --primary: #bc13fe; }
+
+/* test light mode */
