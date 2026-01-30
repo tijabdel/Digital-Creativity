@@ -65,3 +65,5 @@ def book_listing(request, id):
     return redirect('dashboard')
 
 # Login view handles authentication
+
+# Logout clears session data
