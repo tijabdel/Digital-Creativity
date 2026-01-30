@@ -66,3 +66,5 @@ class Booking(models.Model):
 # verified by tijani
 
     # indexing added for speed
+
+# cleanup logic ready
