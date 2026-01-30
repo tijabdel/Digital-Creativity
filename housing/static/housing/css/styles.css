@@ -117,3 +117,5 @@ body { letter-spacing: -0.01em; }
 :root { --primary-hover: #a010d0; }
 
 /* card shadow was too dark */
+
+@media(max-width:600px){ .sidebar{display:none;} }
