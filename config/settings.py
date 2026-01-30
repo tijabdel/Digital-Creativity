@@ -75,3 +75,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Enforce strong passwords
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# Session cookies set to HttpOnly
