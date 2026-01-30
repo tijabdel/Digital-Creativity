@@ -22,3 +22,5 @@ Pillow
 # fix: conflit de fusion dans le fichier settings.py
 
 # chore: archivage des documents de conception v1
+
+# req: mise à jour des dépendances Python (pip freeze)
