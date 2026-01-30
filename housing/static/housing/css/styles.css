@@ -139,3 +139,5 @@ nav { backdrop-filter: blur(5px); }
 .login-container { border-radius: 15px; }
 
 @media (max-width: 400px) { h1 { font-size: 20px; } }
+
+input:focus { border-color: #bc13fe; outline: none; }
