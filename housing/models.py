@@ -82,3 +82,5 @@ class Booking(models.Model):
 # chore: nettoyage des imports inutilisés dans views.py
 
 # db: mise à jour des index pour les requêtes géographiques
+
+# fix: le formulaire de contact ne validait pas les emails
