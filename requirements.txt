@@ -28,3 +28,5 @@ Pillow
 # init: création du script de lancement rapide
 
 # review: validation de l'architecture de sécurité de Fati
+
+# deploy: préparation des fichiers pour le serveur de prod
