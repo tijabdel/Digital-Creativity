@@ -96,3 +96,5 @@ class Booking(models.Model):
 # fix: bug d'affichage des dates sur les anciens navigateurs
 
 # data: normalisation des noms de villes dans la base
+
+# backend: ajustement des modèles pour Django 5.0
