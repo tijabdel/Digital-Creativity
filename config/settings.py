@@ -76,3 +76,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # Session cookies set to HttpOnly
+
+X_FRAME_OPTIONS = 'DENY'
