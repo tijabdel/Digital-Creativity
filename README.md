@@ -19,3 +19,6 @@ Ce projet a été réalisé dans le cadre de notre formation académique. Il uti
 
 ---
 *Projet réalisé en 2026 - ENSA*
+
+## Architecture
+Le projet suit le pattern MVT de Django.
