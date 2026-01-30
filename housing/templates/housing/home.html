@@ -1,0 +1,31 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row align-items-center" style="min-height: 80vh;">
+        <div class="col-lg-6 text-center text-lg-start">
+            <h1 class="display-3 fw-bold mb-3">Trouve ton <br><span class="text-gradient">Logement Idéal</span></h1>
+            <p class="lead text-muted mb-4">
+                La première plateforme marocaine 100% vérifiée pour étudiants. 
+                Fini les intermédiaires, fini le stress.
+            </p>
+            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                <a href="/list/" class="btn btn-primary btn-lg rounded-pill px-5 shadow">Explorer</a>
+                <a href="/map/" class="btn btn-light btn-lg rounded-pill px-5 shadow-sm">Voir Carte</a>
+            </div>
+            
+            <div class="mt-5 d-flex gap-4 justify-content-center justify-content-lg-start text-muted">
+                <div><i class="fas fa-check-circle text-success"></i> 0% Frais</div>
+                <div><i class="fas fa-check-circle text-success"></i> Vérifié</div>
+                <div><i class="fas fa-check-circle text-success"></i> Direct Proprio</div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="glass-card p-2">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" 
+                     class="img-fluid rounded-4" alt="Student Room">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

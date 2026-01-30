@@ -1,0 +1,140 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+
+<div class="filter-bar">
+    <button class="filter-chip active" onclick="filter('all', this)">🌍 Tout</button>
+    <button class="filter-chip" onclick="filter('Rabat', this)">📍 Rabat</button>
+    <button class="filter-chip" onclick="filter('Casablanca', this)">📍 Casablanca</button>
+    <button class="filter-chip" onclick="filter('Marrakech', this)">📍 Marrakech</button>
+    <div style="width:1px; background:#ddd; margin:0 10px;"></div>
+    <button class="filter-chip" onclick="filterType('studio', this)">🏠 Studio</button>
+    <button class="filter-chip" onclick="filterType('coloc', this)">👥 Coloc</button>
+</div>
+
+<div class="listings-container" id="grid">
+    </div>
+
+<div class="empty-state" id="empty">
+    <i class="fa-regular fa-face-frown" style="font-size: 40px; color: #ccc; margin-bottom: 20px;"></i>
+    <h3>Aucun logement trouvé...</h3>
+    <button onclick="reset()" style="margin-top:20px; padding:10px 20px; background:black; color:white; border:none; border-radius:8px; cursor:pointer;">Réinitialiser</button>
+</div>
+
+<script>
+    // ==========================================
+    // 💾 BASE DE DONNÉES LOCALE (SIMULATION API)
+    // ==========================================
+    const DATA = [
+        {
+            id: 1, city: "Rabat", area: "Agdal", type: "studio", price: 3500, title: "Studio Haut Standing Agdal",
+            img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600", rating: 4.8
+        },
+        {
+            id: 2, city: "Rabat", area: "Irfane", type: "coloc", price: 1200, title: "Chambre Cité U Bayt Maarifa",
+            img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600", rating: 4.2
+        },
+        {
+            id: 3, city: "Casablanca", area: "Maarif", type: "studio", price: 4000, title: "Loft Twin Center",
+            img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600", rating: 5.0
+        },
+        {
+            id: 4, city: "Tanger", area: "Boukhalef", type: "coloc", price: 900, title: "Coloc ENCG Tanger",
+            img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600", rating: 3.9
+        },
+        {
+            id: 5, city: "Marrakech", area: "Gueliz", type: "studio", price: 3200, title: "Appartement Carré Eden",
+            img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=600", rating: 4.7
+        },
+        {
+            id: 6, city: "Casablanca", area: "Sidi Maarouf", type: "coloc", price: 1500, title: "Chambre Nearshore",
+            img: "https://images.unsplash.com/photo-1522771753037-633361952345?w=600", rating: 4.1
+        },
+        {
+            id: 7, city: "Rabat", area: "Ocean", type: "coloc", price: 1100, title: "Coloc Tramway Ligne 1",
+            img: "https://images.unsplash.com/photo-1596276020528-5d5402138e6e?w=600", rating: 4.0
+        },
+        {
+            id: 8, city: "Agadir", area: "Founty", type: "studio", price: 2800, title: "Studio proche plage",
+            img: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600", rating: 4.6
+        }
+    ];
+
+    // ==========================================
+    // ⚙️ MOTEUR D'AFFICHAGE
+    // ==========================================
+    let activeCity = 'all';
+    let activeType = 'all';
+
+    function render(items) {
+        const grid = document.getElementById('grid');
+        const empty = document.getElementById('empty');
+        grid.innerHTML = '';
+
+        if(items.length === 0) {
+            empty.style.display = 'block';
+            return;
+        }
+        empty.style.display = 'none';
+
+        items.forEach(item => {
+            const badgeText = item.type === 'coloc' ? 'Colocation' : 'Studio Privé';
+            
+            const card = \
+            <div class="card-pro">
+                <div class="card-img-box">
+                    <img src="\" class="card-img" loading="lazy">
+                    <div class="badge-overlay">\</div>
+                </div>
+                <div class="card-info">
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3>\, \</h3>
+                        <span>★ \</span>
+                    </div>
+                    <p>\</p>
+                    <div class="card-price">\ MAD <span>/ mois</span></div>
+                </div>
+            </div>
+            \;
+            grid.innerHTML += card;
+        });
+    }
+
+    // FONCTION DE FILTRAGE
+    function runFilter() {
+        let filtered = DATA;
+        if(activeCity !== 'all') filtered = filtered.filter(x => x.city === activeCity);
+        if(activeType !== 'all') filtered = filtered.filter(x => x.type === activeType);
+        render(filtered);
+    }
+
+    // EVENTS
+    window.filter = function(city, btn) {
+        // Reset buttons CSS
+        document.querySelectorAll('.filter-chip').forEach(b => {
+            if(b.textContent.includes('📍') || b.textContent.includes('🌍')) b.classList.remove('active');
+        });
+        btn.classList.add('active');
+        activeCity = city;
+        runFilter();
+    }
+
+    window.filterType = function(type, btn) {
+        // Reset type buttons
+        document.querySelectorAll('.filter-chip').forEach(b => {
+            if(b.textContent.includes('🏠') || b.textContent.includes('👥')) b.classList.remove('active');
+        });
+        btn.classList.add('active');
+        activeType = type;
+        runFilter();
+    }
+    
+    window.reset = function() {
+        activeCity = 'all';
+        activeType = 'all';
+        runFilter();
+    }
+
+    // INIT
+    document.addEventListener('DOMContentLoaded', () => render(DATA));
+</script>
+{% endblock %}
