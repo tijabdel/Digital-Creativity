@@ -8,3 +8,5 @@ urlpatterns = [
     path('listing/<int:id>/', views.listing_detail, name='listing_detail'), # NEW
     path('book/<int:id>/', views.book_listing, name='book_listing'), # NEW
 ]
+
+# Auth routes defined
