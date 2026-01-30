@@ -78,3 +78,4 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # Session cookies set to HttpOnly
 
 X_FRAME_OPTIONS = 'DENY'
+# Secret key should be rotated in production
