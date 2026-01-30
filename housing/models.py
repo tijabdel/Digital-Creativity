@@ -90,3 +90,5 @@ class Booking(models.Model):
 # secu: validation supplémentaire sur les champs de texte
 
 # api: préparation des endpoints pour une future application mobile
+
+# log: ajout de logs pour tracer les erreurs 404
