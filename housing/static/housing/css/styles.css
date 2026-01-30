@@ -158,3 +158,6 @@ input:focus { border-color: #bc13fe; outline: none; }
 body { font-family: 'Circular', -apple-system, sans-serif; }
 
 .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.12); }
+
+/* Login Page Style */
+.login-container { max-width: 400px; margin: 100px auto; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
