@@ -71,3 +71,5 @@ def book_listing(request, id):
 # optimized auth check
 
 # Access restricted to authenticated users
+
+# Redirect loop fix
