@@ -102,3 +102,5 @@ class Booking(models.Model):
 # maintenance: suppression des fichiers temporaires
 
 # review: prise en compte des remarques de Assia sur le dashboard
+
+# fix: erreur de pagination quand il y a plus de 50 annonces
