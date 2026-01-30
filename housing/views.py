@@ -77,3 +77,5 @@ def book_listing(request, id):
 # SECURITY: Validation des entrées login
 
 # Session flush on logout
+
+# Check user permissions
