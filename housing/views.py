@@ -89,3 +89,5 @@ def book_listing(request, id):
 # final check
 
 # security check comment
+
+# FIX: Form was missing POST method check
