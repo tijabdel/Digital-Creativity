@@ -1,0 +1,61 @@
+﻿:root { 
+    --bg-dark: #02020a; 
+    --card-bg: #0f0f16;
+    --neon-purple: #bc13fe; 
+    --neon-cyan: #00f2ea; 
+    --text-grey: #a0a0a0;
+}
+body { background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; }
+
+/* NAVBAR */
+.navbar { background: rgba(10,10,20,0.95); border-bottom: 1px solid #333; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 800; font-size: 20px; background: linear-gradient(to right, white, var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a.active { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
+
+/* LOGIN SCREEN (System Access) */
+.login-container { display: flex; height: 100vh; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%); }
+.login-box { 
+    width: 350px; padding: 40px; border: 2px solid var(--neon-purple); border-radius: 10px; 
+    box-shadow: 0 0 30px rgba(188, 19, 254, 0.3); text-align: left; background: #000;
+}
+.system-title { color: var(--neon-cyan); font-family: 'Courier New', monospace; font-size: 24px; margin-bottom: 30px; text-align: center; text-shadow: 0 0 10px var(--neon-cyan); }
+.input-group { margin-bottom: 20px; }
+.input-group label { color: var(--neon-cyan); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 5px; }
+.input-group input { width: 100%; padding: 10px; background: white; border: none; color: black; font-weight: bold; }
+.btn-login { 
+    width: 100%; padding: 12px; background: var(--neon-purple); border: none; color: white; 
+    font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px;
+    box-shadow: 0 0 15px var(--neon-purple); transition: 0.3s;
+}
+.btn-login:hover { background: white; color: var(--neon-purple); }
+
+/* QUEST LOG DASHBOARD */
+.quest-header { padding: 40px; border-bottom: 1px solid #222; }
+.quest-title { font-size: 28px; font-weight: 800; }
+.quest-user { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
+.lvl-badge { background: var(--neon-purple); padding: 5px 10px; border-radius: 4px; font-size: 12px; float: right; }
+.section-title { color: var(--neon-cyan); font-size: 14px; letter-spacing: 1px; margin-top: 30px; margin-bottom: 15px; }
+
+/* EXPLORER & MAP */
+.filter-bar { display: flex; gap: 10px; padding: 20px 40px; background: #080810; }
+.filter-input { background: #1a1a25; border: 1px solid #333; color: white; padding: 10px; border-radius: 5px; flex: 1; }
+.btn-update { background: var(--neon-purple); color: white; border: none; padding: 0 30px; border-radius: 5px; cursor: pointer; }
+
+.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 0 40px 40px 40px; }
+.listing-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #222; transition: 0.3s; }
+.listing-card:hover { transform: translateY(-5px); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 242, 234, 0.2); }
+.card-img { height: 150px; background-size: cover; position: relative; }
+.badge-type { position: absolute; top: 10px; right: 10px; background: #222; color: white; padding: 4px 8px; font-size: 10px; border-radius: 4px; text-transform: uppercase; }
+.card-body { padding: 15px; }
+.card-title { font-size: 16px; margin: 0 0 5px 0; }
+.card-loc { color: #666; font-size: 12px; display: block; margin-bottom: 10px; }
+.tags span { display: inline-block; background: #1a1a25; color: #888; font-size: 10px; padding: 3px 6px; margin-right: 5px; border-radius: 3px; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #222; padding-top: 10px; }
+.price { color: var(--neon-cyan); font-weight: bold; font-size: 18px; }
+.btn-contact { background: #222; color: white; border: 1px solid #444; padding: 8px 15px; border-radius: 5px; font-size: 12px; cursor: pointer; }
+.btn-contact:hover { background: white; color: black; }
+
+/* LEAFLET DARK MODE OVERRIDE */
+.leaflet-popup-content-wrapper { background: #1a1a25; color: white; }
+.leaflet-popup-tip { background: #1a1a25; }
