@@ -92,3 +92,5 @@ class Booking(models.Model):
 # api: préparation des endpoints pour une future application mobile
 
 # log: ajout de logs pour tracer les erreurs 404
+
+# fix: bug d'affichage des dates sur les anciens navigateurs
