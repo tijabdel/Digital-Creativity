@@ -100,3 +100,5 @@ class Booking(models.Model):
 # backend: ajustement des modèles pour Django 5.0
 
 # maintenance: suppression des fichiers temporaires
+
+# review: prise en compte des remarques de Assia sur le dashboard
