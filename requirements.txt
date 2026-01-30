@@ -30,3 +30,5 @@ Pillow
 # review: validation de l'architecture de sécurité de Fati
 
 # deploy: préparation des fichiers pour le serveur de prod
+
+# docs: ajout des diagrammes UML dans le dossier docs
