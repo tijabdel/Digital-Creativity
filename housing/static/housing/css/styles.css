@@ -147,3 +147,5 @@ input:focus { border-color: #bc13fe; outline: none; }
 .error-message { color: #dc3545; font-size: 0.9em; }
 
 /* ready for demo */
+
+@media (max-width: 768px) { .navbar { padding: 5px; } }
