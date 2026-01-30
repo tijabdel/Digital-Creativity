@@ -119,3 +119,5 @@ body { letter-spacing: -0.01em; }
 /* card shadow was too dark */
 
 @media(max-width:600px){ .sidebar{display:none;} }
+
+body { font-size: 15px; }
