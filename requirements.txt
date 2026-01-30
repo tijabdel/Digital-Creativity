@@ -38,3 +38,5 @@ Pillow
 # arch: définition des standards de code (PEP8)
 
 # manager: nettoyage des branches git obsolètes
+
+# sync: synchronisation avec le repo de l'école
