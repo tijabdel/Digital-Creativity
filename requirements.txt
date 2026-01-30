@@ -32,3 +32,5 @@ Pillow
 # deploy: préparation des fichiers pour le serveur de prod
 
 # docs: ajout des diagrammes UML dans le dossier docs
+
+# config: passage en mode DEBUG=False pour test
