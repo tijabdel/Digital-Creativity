@@ -2,3 +2,5 @@
 django-leaflet
 django-crispy-forms
 Pillow
+
+# final deps
