@@ -18,3 +18,5 @@ Pillow
 # ci: configuration du pipeline de déploiement
 
 # project: mise à jour du tableau de bord Notion
+
+# fix: conflit de fusion dans le fichier settings.py
