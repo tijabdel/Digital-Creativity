@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>System Access</title>
+    <link rel="stylesheet" href="/static/housing/css/styles.css">
+</head>
+<body class="login-container">
+    <form method="POST" class="login-box">
+        {% csrf_token %}
+        <div class="system-title">SYSTEM ACCESS</div>
+        <div class="input-group">
+            <label>IDENTIFIANT</label>
+            <input type="text" name="username" value="ASSIA">
+        </div>
+        <div class="input-group">
+            <label>MOT DE PASSE</label>
+            <input type="password" name="password" value="********">
+        </div>
+        <button type="submit" class="btn-login">CONNEXION</button>
+    </form>
+</body>
+</html>
