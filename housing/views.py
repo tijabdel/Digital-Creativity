@@ -93,3 +93,5 @@ def book_listing(request, id):
 # FIX: Form was missing POST method check
 
 # debug print removed
+
+# complex query logic for city filter
