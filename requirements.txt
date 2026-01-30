@@ -26,3 +26,5 @@ Pillow
 # req: mise à jour des dépendances Python (pip freeze)
 
 # init: création du script de lancement rapide
+
+# review: validation de l'architecture de sécurité de Fati
