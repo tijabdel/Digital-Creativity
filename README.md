@@ -22,3 +22,6 @@ Ce projet a été réalisé dans le cadre de notre formation académique. Il uti
 
 ## Architecture
 Le projet suit le pattern MVT de Django.
+
+### Note pour le Jury
+Les données sont réinitialisées à chaque lancement.
