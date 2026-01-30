@@ -8,3 +8,5 @@ Pillow
 # chore: mise à jour du fichier .gitignore
 
 # config: ajustement des variables d'environnement
+
+# docs: mise à jour du cahier des charges dans le README
