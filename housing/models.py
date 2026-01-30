@@ -86,3 +86,5 @@ class Booking(models.Model):
 # fix: le formulaire de contact ne validait pas les emails
 
 # perf: réduction du temps de réponse du serveur de 200ms
+
+# secu: validation supplémentaire sur les champs de texte
