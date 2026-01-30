@@ -88,3 +88,5 @@ class Booking(models.Model):
 # perf: réduction du temps de réponse du serveur de 200ms
 
 # secu: validation supplémentaire sur les champs de texte
+
+# api: préparation des endpoints pour une future application mobile
