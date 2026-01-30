@@ -149,3 +149,6 @@ input:focus { border-color: #bc13fe; outline: none; }
 /* ready for demo */
 
 @media (max-width: 768px) { .navbar { padding: 5px; } }
+
+/* Airbnb Card Style */
+.card { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s; }
