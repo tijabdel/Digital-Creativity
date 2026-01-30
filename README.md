@@ -1,75 +1,76 @@
-﻿# 🏠 StudentHouse
+﻿# 🏠 StudentHouse (Projet de Groupe)
 
-**Projet réalisé dans le cadre du module Digital Creativity.**
+**Module : Digital Creativity**
 
-## 📋 Présentation
-**StudentHouse** est une plateforme web conçue pour simplifier la recherche de logement pour les étudiants marocains.
+Bonjour ! Voici le rendu final de notre projet **StudentHouse**.
 
-Notre objectif était de proposer une alternative fiable aux groupes Facebook et aux sites généralistes (Avito), en ciblant spécifiquement les besoins étudiants : proximité des facultés (ENCG, FST, UM5...), budget adapté et critères de colocation.
-
-L'accent a été mis sur **l'expérience utilisateur (UX)** avec un design "Light Mode" épuré et une interactivité fluide.
+Nous sommes une équipe de 4 étudiants et nous avons voulu créer une solution concrète pour le logement étudiant au Maroc.
+Le but est simple : remplacer les fichiers Excel et les groupes Facebook par une vraie plateforme, fiable et moderne.
 
 ---
 
-## 👥 L'Équipe
-Ce projet a été développé par notre groupe de 4 membres :
+## 👥 L'Équipe Projet
 
-* **Membre 1** (Assia Belaissia)
-* **Membre 2**
-* **Membre 3**
-* **Membre 4**
+* **Membre 1** : (Mets ton nom ici - ex: Assia Belaissia)
+* **Membre 2** : (Nom du collègue)
+* **Membre 3** : (Nom du collègue)
+* **Membre 4** : (Nom du collègue)
 
 ---
 
-## ⚙️ Installation Technique
+## 💡 Pourquoi ce projet ?
 
-Le projet est construit avec **Django** (Python). Voici la procédure pour le lancer sur votre machine :
+Nous sommes partis d'un constat réel : trouver un logement près de son école (ENCG, FST, UM5...) est souvent un calvaire.
+Nous avons donc conçu une application qui mise tout sur le **réalisme** et l'**interactivité**.
 
-### 1. Configuration de l'environnement
-Ouvrez le terminal dans le dossier du projet :
+### Nos fonctionnalités clés :
+1.  **Données Réelles & Vérifiées** :
+    * Nous avons intégré les vrais prix et localisations des résidences (ex: *Bayt Al Maârifa*, *Résidence Ziraoui*).
+    * Les logements vérifiés ont un badge spécial sur la carte.
 
+2.  **Interactivité Totale (Style "Moul Dar")** :
+    * L'application permet aux utilisateurs de **publier leur propre annonce**.
+    * Si vous libérez votre chambre, vous pouvez l'ajouter via l'espace "Publier".
+
+3.  **Communication Directe** :
+    * Pas de formulaires inutiles : un bouton **WhatsApp** ouvre directement la discussion avec le propriétaire.
+
+4.  **Design "Light Mode"** :
+    * Nous avons opté pour une interface épurée (style Airbnb) pour que l'information soit lisible et accessible.
+
+---
+
+## 🔧 Guide d'Installation (Pour le correcteur)
+
+Le projet tourne sous Python/Django. Voici comment le lancer chez vous en 3 étapes :
+
+### 1. Préparer l'environnement
 \\\ash
-# Activer l'environnement virtuel
+# Dans le dossier du projet :
 .\venv\Scripts\activate
-
-# Installer les dépendances
 pip install -r requirements.txt
 \\\
 
-### 2. Initialisation des Données (Important)
-Nous avons développé un script d'automatisation pour pré-remplir la base de données avec des résidences réelles (Bayt Al Maârifa, Ziraoui...) afin de rendre la démo pertinente.
-
+### 2. Charger les données (Important)
+Nous avons créé un script spécial pour ne pas livrer une coquille vide.
+Lancez ceci pour remplir le site avec nos exemples réels :
 \\\ash
-# Créer les tables et injecter les données
 python manage.py makemigrations housing
 python manage.py migrate
 python seed.py
 \\\
 
-### 3. Lancement
+### 3. Lancer le site
 \\\ash
 python manage.py runserver
 \\\
-Accès : **http://127.0.0.1:8000/**
+👉 **http://127.0.0.1:8000/**
 
 ---
 
-## 💡 Fonctionnalités Clés
+## 📍 Ce qu'il faut tester
+* Connectez-vous (pseudo libre).
+* Allez sur la **Carte** pour voir la différence entre les résidences privées (Bleu) et les particuliers (Violet).
+* Essayez les **Filtres** (notamment le filtre "Filles/Garçons", très important au Maroc).
 
-Nous avons intégré plusieurs fonctionnalités spécifiques au contexte marocain :
-
-1.  **Filtrage Contextuel :**
-    * Possibilité de filtrer par **Genre** (Filles / Garçons), un critère essentiel pour les résidences et colocations au Maroc.
-    * Filtres dynamiques par Ville et Budget.
-
-2.  **Cartographie Interactive :**
-    * Utilisation de *Leaflet.js* (léger et rapide).
-    * **Code couleur :** Les résidences vérifiées apparaissent en Bleu, les annonces particulières en Violet.
-
-3.  **Système "Moul Dar" (Bailleurs) :**
-    * Tout utilisateur peut publier une annonce via son Espace Personnel.
-    * Intégration d'un bouton **WhatsApp API** pour contacter directement le propriétaire sans intermédiaire.
-
----
-
-*Génie des Systèmes et Réseaux - ENSA*
+Merci de nous lire !
