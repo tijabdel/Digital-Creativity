@@ -4,7 +4,8 @@
     <div class="sidebar" style="width: 320px; overflow-y: auto;">
         <h3 style="margin-bottom: 20px; font-size: 18px;">🎯 Filtrer ma recherche</h3>
         <form method="GET" action="{% url 'explorer' %}">
-            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase;">Ville</label>
+            
+            <label class="filter-label">Ville</label>
             <select name="city" class="form-control">
                 <option value="All">Tout le Maroc</option>
                 <option value="Rabat" {% if selected_city == 'Rabat' %}selected{% endif %}>Rabat</option>
@@ -13,26 +14,29 @@
                 <option value="Ifrane" {% if selected_city == 'Ifrane' %}selected{% endif %}>Ifrane</option>
             </select>
 
-            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 10px; display:block;">Genre</label>
+            <label class="filter-label">Genre</label>
             <select name="gender" class="form-control">
-                <option value="All">Mixte / Tous</option>
+                <option value="All">Tous</option>
                 <option value="Filles" {% if selected_gender == 'Filles' %}selected{% endif %}>Filles Uniquement</option>
                 <option value="Garçons" {% if selected_gender == 'Garçons' %}selected{% endif %}>Garçons Uniquement</option>
             </select>
 
-            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 10px; display:block;">Budget Max</label>
-            <input type="range" name="price" min="500" max="8000" step="100" oninput="document.getElementById('pDisp').innerText = this.value + ' DH'" style="width: 100%; accent-color: #bc13fe;">
-            <div id="pDisp" style="text-align: right; color: #bc13fe; font-weight: bold;">-- DH</div>
+            <label class="filter-label">Budget (DH)</label>
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                <input type="number" name="min_price" placeholder="Min" value="{{ min_val }}" class="form-control" style="margin:0; width: 48%;">
+                <span style="color:#aaa;">-</span>
+                <input type="number" name="max_price" placeholder="Max" value="{{ max_val }}" class="form-control" style="margin:0; width: 48%;">
+            </div>
+            <small style="color: #718096; font-size: 11px;">Ex: Entre 1000 et 3000 DH</small>
 
-            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Actualiser les résultats</button>
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Appliquer les filtres</button>
         </form>
     </div>
 
     <div style="flex: 1; padding: 30px; overflow-y: auto; background: #f7f9fc;">
-        
         <div id="map" style="height: 300px; width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></div>
         
-        <h3 style="margin-bottom: 20px;">Logements disponibles</h3>
+        <h3 style="margin-bottom: 20px;">{{ listings.count }} Résultats trouvés</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
             {% for l in listings %}
             <div class="listing-card">
@@ -43,16 +47,12 @@
                     {% endif %}
                 </div>
                 <div style="padding: 16px;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div>
-                            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">{{ l.title }}</h3>
-                            <p class="text-muted" style="margin: 0;">📍 {{ l.city }} • {{ l.university_nearby }}</p>
-                        </div>
-                    </div>
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">{{ l.title }}</h3>
+                    <p class="text-muted" style="margin: 0;">📍 {{ l.city }}</p>
                     <hr style="border: 0; border-top: 1px solid #edf2f7; margin: 12px 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="price" style="font-size: 18px;">{{ l.price }} DH</span>
-                        <a href="{% url 'listing_detail' l.id %}" style="color: #bc13fe; font-weight: 600; font-size: 14px; text-decoration: none;">Voir détails →</a>
+                        <a href="{% url 'listing_detail' l.id %}" style="color: #bc13fe; font-weight: 600; font-size: 14px; text-decoration: none;">Voir →</a>
                     </div>
                 </div>
             </div>
@@ -63,17 +63,12 @@
 
 <script>
     var map = L.map('map').setView([33.5731, -7.5898], 6);
-    // CARTE CLAIRE (Positron)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap &copy; CartoDB'
-    }).addTo(map);
-
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
     var data = {{ map_data|safe }};
     data.forEach(h => {
-        var color = h.verified ? '#38b2ac' : '#bc13fe';
-        L.circleMarker([h.lat, h.lng], { radius: 8, color: 'white', weight: 2, fillColor: color, fillOpacity: 0.9 })
-         .addTo(map)
-         .bindPopup('<b style="font-family:sans-serif">'+h.title+'</b><br>'+h.price+' DH');
+        L.circleMarker([h.lat, h.lng], { radius: 8, color: 'white', weight: 2, fillColor: h.verified ? '#38b2ac' : '#bc13fe', fillOpacity: 0.9 })
+         .addTo(map).bindPopup('<b>'+h.title+'</b><br>'+h.price+' DH');
     });
 </script>
+<style>.filter-label { font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 15px; display:block; margin-bottom: 5px; }</style>
 {% endblock %}
