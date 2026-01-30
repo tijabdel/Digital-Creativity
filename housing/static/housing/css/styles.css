@@ -123,3 +123,5 @@ body { letter-spacing: -0.01em; }
 body { font-size: 15px; }
 
 .btn-primary:hover { opacity: 0.9; }
+
+nav { backdrop-filter: blur(5px); }
