@@ -111,3 +111,5 @@ h1, h2, h3 { color: #1a202c; margin-top: 0; }
 /* Mobile Fixes */ @media(max-width:768px) { .sidebar { display: none; } }
 
 body { letter-spacing: -0.01em; }
+
+.btn-primary:active { transform: scale(0.98); }
