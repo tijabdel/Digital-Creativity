@@ -1,0 +1,143 @@
+﻿:root {
+    --primary: #bc13fe;       /* Violet Marque */
+    --secondary: #00f2ea;     /* Cyan pour les badges */
+    --bg-body: #f7f9fc;       /* Gris très clair élégant */
+    --bg-card: #ffffff;       /* Blanc pur */
+    --text-main: #2d3748;     /* Gris foncé lisible */
+    --text-muted: #718096;    /* Gris moyen */
+    --border: #e2e8f0;        /* Bordure subtile */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* NAVBAR BLANCHE */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.logo { font-weight: 900; font-size: 22px; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+
+/* CARTES (Style Propre) */
+.listing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+/* IMAGES & BADGES */
+.card-img { height: 180px; background-size: cover; background-position: center; position: relative; }
+.badge-type {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a202c;
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 20px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* TYPOGRAPHIE */
+h1, h2, h3 { color: #1a202c; margin-top: 0; }
+.price { font-size: 20px; font-weight: 800; color: var(--primary); }
+.text-muted { color: var(--text-muted); font-size: 14px; }
+
+/* BOUTONS */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { background: #9d10d4; box-shadow: 0 4px 12px rgba(188, 19, 254, 0.3); }
+
+/* SIDEBAR FILTRES */
+.sidebar {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    height: 100%;
+    padding: 25px;
+}
+.form-control {
+    width: 100%; padding: 10px; margin-bottom: 15px;
+    background: #f7fafc; border: 1px solid #cbd5e0;
+    border-radius: 6px; color: #2d3748;
+}
+
+/* DASHBOARD */
+.dashboard-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+/* TWEAK BUDGET INPUTS */
+.filter-label { margin-top: 15px; display: block; font-weight: bold; color: #718096; }
+
+/* Tweaking card shadows */ .listing-card { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+/* Mobile Fixes */ @media(max-width:768px) { .sidebar { display: none; } }
+
+body { letter-spacing: -0.01em; }
+
+.btn-primary:active { transform: scale(0.98); }
+
+:root { --primary-hover: #a010d0; }
+
+/* card shadow was too dark */
+
+@media(max-width:600px){ .sidebar{display:none;} }
+
+body { font-size: 15px; }
+
+.btn-primary:hover { opacity: 0.9; }
+
+nav { backdrop-filter: blur(5px); }
+
+:root { --primary: #bc13fe; }
+
+/* test light mode */
+
+.btn-primary { border-radius: 5px; }
+
+# oops
+
+/* mobile fix */
+
+.login-container { border-radius: 15px; }
+
+@media (max-width: 400px) { h1 { font-size: 20px; } }
+
+input:focus { border-color: #bc13fe; outline: none; }
