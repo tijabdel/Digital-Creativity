@@ -76,3 +76,5 @@ class Booking(models.Model):
 # fix(db): correction d'une incohérence dans la table des listings
 
 # refactor: optimisation de la boucle de recherche pour la vitesse
+
+# test: ajout de tests unitaires pour le module housing
