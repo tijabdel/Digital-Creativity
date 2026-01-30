@@ -13,3 +13,5 @@ urlpatterns = [
 ]
 
 # STRUCTURE: Reorganized URL patterns for better scalability
+
+# main url entry point
