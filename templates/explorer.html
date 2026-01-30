@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentHouse | Design Mode</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">StudentHouse<span style="font-size:10px; color:#666; margin-left:10px;">DESIGN BUILD v1.0</span></div>
+        <div style="display:flex; gap:20px; align-items:center;">
+            <a href="#" style="color:white; text-decoration:none;">Accueil</a>
+            <a href="#" style="color:var(--secondary); text-decoration:none; font-weight:bold;">Explorer</a>
+            <div style="width:35px; height:35px; background:#333; border-radius:50%;"></div>
+        </div>
+    </nav>
+
+    <div class="header" style="text-align:center; padding: 60px 20px;">
+        <h1 style="font-size: 48px; margin: 0;">Trouve ta <span style="color:var(--primary)">Zone</span>.</h1>
+        <p style="color:#888; margin-top:10px;">Logements étudiants vérifiés au Maroc.</p>
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px;">
+        <button style="background:#222; border:1px solid #444; color:white; padding:10px 20px; border-radius:50px;">🏙️ Casablanca</button>
+        <button style="background:#222; border:1px solid #444; color:white; padding:10px 20px; border-radius:50px;">🚺 Filles Uniquement</button>
+        <button style="background:#222; border:1px solid #444; color:white; padding:10px 20px; border-radius:50px;">💰 -2000 DH</button>
+    </div>
+
+    <div class="grid">
+        {% for l in listings %}
+        <div class="card">
+            <div class="card-img" style="background-image: url('{{ l.image }}');">
+                <span class="badge">{{ l.type }}</span>
+                <span class="badge-gender {% if l.gender == 'Filles' %}girl{% else %}boy{% endif %}">
+                    {% if l.gender == 'Filles' %}🚺 FILLES{% else %}🚹 GARÇONS{% endif %}
+                </span>
+            </div>
+            <div class="content">
+                <div style="display:flex; justify-content:space-between; color:#888; font-size:12px;">
+                    <span><i class="fas fa-map-marker-alt"></i> {{ l.city }}</span>
+                    <span><i class="fas fa-university"></i> {{ l.uni }}</span>
+                </div>
+                <h2 style="margin: 10px 0; font-size: 18px;">{{ l.title }}</h2>
+                
+                <div style="display:flex; gap:5px; margin-top:5px;">
+                    {% for tag in l.tags %}
+                    <span style="font-size:10px; background:#222; padding:3px 8px; border-radius:4px; color:#ccc;">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+
+                <span class="price">{{ l.price }} DH <small style="font-size:12px; color:#666; font-weight:400;">/mois</small></span>
+                
+                <a href="/listing/{{ l.id }}/" class="btn">Voir Détails</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
