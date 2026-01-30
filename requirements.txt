@@ -10,3 +10,5 @@ Pillow
 # config: ajustement des variables d'environnement
 
 # docs: mise à jour du cahier des charges dans le README
+
+# arch: restructuration des dossiers templates
