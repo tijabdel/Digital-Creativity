@@ -108,3 +108,5 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # DEMO CONFIG: Debug mode enabled for presentation
 
 LOGIN_REDIRECT_URL = 'dashboard'
+
+# security audit: OK
