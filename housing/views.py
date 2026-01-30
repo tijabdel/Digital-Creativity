@@ -99,3 +99,5 @@ def book_listing(request, id):
 # optimization
 
 # code cleanup
+
+# view logic organized
