@@ -67,3 +67,5 @@ def book_listing(request, id):
 # Login view handles authentication
 
 # Logout clears session data
+
+# optimized auth check
