@@ -15,3 +15,5 @@ class ListingForm(forms.ModelForm):
             'whatsapp_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '2126...'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
+
+# label tweaks
