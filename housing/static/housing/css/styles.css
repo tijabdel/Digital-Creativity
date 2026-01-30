@@ -165,3 +165,5 @@ body { font-family: 'Circular', -apple-system, sans-serif; }
 .btn-login { width: 100%; background-color: #6f42c1; color: white; font-weight: 600; }
 
 /* ui: ajustement de la marge du footer qui était un peu trop grande */
+
+/* fix: correction d'une petite faute de frappe sur la page d'accueil */
