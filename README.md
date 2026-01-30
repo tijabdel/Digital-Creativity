@@ -1,64 +1,71 @@
-﻿# 🏠 StudentHouse (Projet 'Sakan')
+﻿# 🏠 StudentHouse (Projet Digital Creativity)
 
-Bonjour! Voici le code source de notre projet **StudentHouse**.
-C'est une plateforme conçue pour aider les étudiants marocains (Rabat, Casa, Tanger...) à trouver des logements sécurisés et adaptés à leur budget.
+Bonjour ! Voici le rendu final de mon projet **StudentHouse**.
 
-Le design est inspiré d'une esthétique "Neon/Dark Mode" pour rendre l'expérience utilisateur moderne et agréable.
+L'idée était de créer une plateforme qui aide vraiment les étudiants marocains à trouver un logement, sans tomber sur des arnaques. J'ai voulu faire quelque chose de plus "propre" et moderne que les sites qu'on utilise d'habitude (comme Avito ou les groupes Facebook).
+
+J'ai passé beaucoup de temps sur le design (Mode Clair / Minimaliste) et sur l'interactivité.
 
 ---
 
-## 🛠️ Prérequis
+## 🔧 Comment tester le projet sur votre machine
 
-Avant de lancer le projet, assurez-vous d'avoir **Python** installé sur votre machine.
+J'ai essayé de rendre l'installation la plus simple possible. Il vous faut juste **Python**.
 
-## 🚀 Comment lancer l'application (Guide Rapide)
+### 1. Installation
 
-Suivez ces étapes simples pour tester le site sur votre ordinateur :
+Ouvrez le dossier dans le terminal et lancez ces commandes une par une :
 
-### 1. Activer l'environnement
-Si vous êtes sur Windows (PowerShell), tapez :
+**Activer l'environnement virtuel (pour ne pas mélanger les bibliothèques) :**
 \\\ash
 .\venv\Scripts\activate
 \\\
 
-### 2. Installer les dépendances
-Installez les bibliothèques nécessaires (Django, Leaflet...) :
+**Installer ce qu'il faut (Django, etc.) :**
 \\\ash
 pip install -r requirements.txt
 \\\
 
-### 3. Préparer la Base de Données
-Si c'est la première fois que vous lancez le projet :
+### 2. La Base de Données (Important !)
+
+Au lieu de vous laisser devant une application vide, j'ai codé un petit script spécial (seed.py) qui remplit le site avec des **vraies données**.
+Il va ajouter automatiquement des résidences comme *Bayt Al Maârifa* ou *Ziraoui* avec les vrais prix du marché.
+
+Lancez simplement :
 \\\ash
+python manage.py makemigrations housing
 python manage.py migrate
 python seed.py
 \\\
-*(Le script \seed.py\ va remplir le site avec de fausses annonces pour Rabat, Casa et Ifrane afin que vous ayez du contenu à visiter)*
+*(Si vous voyez "7 Annonces Réalistes Importées", c'est que c'est bon !)*
 
-### 4. Lancer le Serveur
+### 3. Lancer le site
+
 \\\ash
 python manage.py runserver
 \\\
-
-Ensuite, ouvrez votre navigateur et allez sur : **http://127.0.0.1:8000/**
-
----
-
-## 🔐 Identifiants de Test
-
-Pour accéder au tableau de bord "Quest Log", vous pouvez utiliser n'importe quel nom d'utilisateur.
-* **Login :** ASSIA (ou votre nom)
-* **Mot de passe :** (N'importe quoi, c'est une démo)
+Ensuite, cliquez ici : **http://127.0.0.1:8000/**
 
 ---
 
-## ✨ Fonctionnalités Principales
+## 💡 Ce qu'il faut tester
 
-* **Recherche Filtrée :** Par ville (Rabat, Tanger...), par genre (Filles/Garçons) et par budget.
-* **Carte Interactive :** Visualisation des logements proches des universités (UM5, ENCG...).
-* **Contact Direct :** Bouton WhatsApp intégré pour parler directement aux propriétaires ("Moul Dar").
-* **Design Responsive :** L'interface s'adapte aux écrans (Laptop & Mobile).
+Une fois sur le site, voici les fonctionnalités principales que j'ai développées :
+
+1.  **La Carte Interactive :** Elle n'utilise pas Google Maps (trop lourd), mais *Leaflet*. J'ai mis des marqueurs de couleurs différentes :
+    * 🔵 **Bleu :** Les résidences universitaires vérifiées.
+    * 🟣 **Violet :** Les annonces des particuliers.
+
+2.  **Publier une annonce :** Connectez-vous (Pseudo : "Assia" ou ce que vous voulez) et allez dans **"Mon Espace"**. Vous verrez un bouton pour ajouter votre propre annonce. Elle apparaîtra directement sur la carte !
+
+3.  **Le contact WhatsApp :** Sur chaque annonce, le bouton "Contacter" ouvre vraiment une discussion WhatsApp (simulée avec un numéro marocain).
+
+4.  **Les Filtres :** Vous pouvez trier par ville, budget, mais surtout par **Genre** (Filles / Garçons), car c'est un critère essentiel au Maroc que beaucoup d'applis oublient.
 
 ---
 
-*Projet réalisé dans le cadre du module Digital Creativity.*
+Merci d'avoir pris le temps de tester !
+Si vous avez un souci pour lancer le serveur, n'hésitez pas à me le dire.
+
+**Assia**
+*Génie des Systèmes et Réseaux - ENSA*
