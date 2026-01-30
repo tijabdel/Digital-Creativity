@@ -74,3 +74,5 @@ class Booking(models.Model):
 # code formatted
 
 # fix(db): correction d'une incohérence dans la table des listings
+
+# refactor: optimisation de la boucle de recherche pour la vitesse
