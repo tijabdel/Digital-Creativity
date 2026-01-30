@@ -52,3 +52,5 @@ class Booking(models.Model):
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
     date_booked = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, default="EN ATTENTE")
+
+# User data protection
