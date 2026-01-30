@@ -83,3 +83,5 @@ def book_listing(request, id):
 # Redirect loop fix implementation
 
 # Code cleanup pass
+
+# moved some logic here
