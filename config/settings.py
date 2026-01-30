@@ -104,3 +104,5 @@ SESSION_COOKIE_HTTPONLY = True
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # conflict fixed
+
+# DEMO CONFIG: Debug mode enabled for presentation
