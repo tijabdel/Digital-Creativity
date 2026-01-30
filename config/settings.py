@@ -73,3 +73,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AUTH CONFIGURATION
 # Enforce strong passwords
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
