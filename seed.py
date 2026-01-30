@@ -1,117 +1,146 @@
-﻿import os, django
+﻿import os
+import django
 import random
+
+# 1. Setup Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
+
 from housing.models import Listing
 
+# 2. Nettoyage
+print('🧹 Nettoyage de la base de données...')
 Listing.objects.all().delete()
-print('🧹 Base de données nettoyée.')
 
-# --- DONNÉES RÉELLES MAROC ---
+# 3. Les Données (Descriptions conservées, Images retirées)
+listings_data = [
+    # --- RABAT ---
+    {
+        'title': 'Chambre Solo - Madinat Al Irfane',
+        'description': '🔥 LE SPOT ÉTUDIANT ! Chambre rénovée juste à côté de l\'ENSIAS et de la Fac de Médecine. Ambiance calme pour réviser, WiFi Fibre optique inclus. Douche commune mais propre. 5min à pied du Tram.',
+        'price': 1600,
+        'city': 'Rabat',
+        'type': 'Chambre',
+        'is_verified': True,
+        'lat': 33.9785, 'lng': -6.8654,
+        'owner': 'Mme Tazi (Super Hôte)'
+    },
+    {
+        'title': 'Coloc Agdal (Filles) - Avenue de France',
+        'description': 'Cherche 4ème colocataire (fille) pour grand appart à l\'Agdal. Juste au-dessus du McDo ! Salon géant avec Netflix, cuisine équipée. Loyer inclut syndic et eau. Ambiance chill mais sérieuse.',
+        'price': 2200,
+        'city': 'Rabat',
+        'type': 'Appartement',
+        'is_verified': False,
+        'lat': 34.0045, 'lng': -6.8492,
+        'owner': 'Sarah (Étudiante)'
+    },
+    {
+        'title': 'Petit Studio Océan - Pas cher',
+        'description': 'Petit studio indépendant quartier Océan. Idéal petit budget. Pas le grand luxe mais fonctionnel. Proche bus et taxis. Convient pour étudiant FST ou Fac des Lettres.',
+        'price': 1800,
+        'city': 'Rabat',
+        'type': 'Studio',
+        'is_verified': False,
+        'lat': 34.0224, 'lng': -6.8351,
+        'owner': 'Mr Benani'
+    },
 
-# 1. RABAT (Madinat Al Irfane / Agdal)
-Listing.objects.create(
-    title="Bayt Al Maârifa - Studio Individuel",
-    city="Rabat",
-    university_nearby="UM5 / Madinat Al Irfane",
-    price=1900,
-    type="RESIDENCE",
-    gender_preference="Filles",
-    is_bills_included=True,
-    is_verified=True,
-    lat=33.9716, lng=-6.8656,
-    description="Studio tout équipé dans la résidence officielle Bayt Al Maârifa. Sécurité 24/7, accès wifi, proche station tramway.",
-    image_url="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800"
-)
-Listing.objects.create(
-    title="Colocation Agdal Proche Tram",
-    city="Rabat",
-    university_nearby="Faculté des Sciences",
-    price=1500,
-    type="COLOC",
-    gender_preference="Garçons",
-    is_bills_included=False,
-    is_verified=False, # Annonce particulier
-    lat=34.0044, lng=-6.8488,
-    description="Cherche colocataire sérieux. Appartement 3 chambres, salon, cuisine équipée. Quartier calme.",
-    owner_name="Karim"
-)
+    # --- CASABLANCA ---
+    {
+        'title': 'Studio Maârif - "The Place to Be"',
+        'description': 'Studio moderne à 2min du Twin Center. Pour étudiant(e) qui veut être au centre de tout. Concierge 24/7, ascenseur, cuisine américaine. Cher mais top qualité.',
+        'price': 4500,
+        'city': 'Casablanca',
+        'type': 'Studio',
+        'is_verified': False,
+        'lat': 33.5855, 'lng': -7.6373,
+        'owner': 'Agence Immo Casa'
+    },
+    {
+        'title': 'Chambre chez l\'habitant - Oulfa',
+        'description': 'Famille loue une chambre propre avec bureau pour étudiant sérieux. Quartier Oulfa (Hay Hassani), accès direct en bus à la Fac Route El Jadida et HEM. Repas possibles.',
+        'price': 1200,
+        'city': 'Casablanca',
+        'type': 'Chambre',
+        'is_verified': True,
+        'lat': 33.5539, 'lng': -7.6622,
+        'owner': 'Famille El Idrissi'
+    },
+    {
+        'title': 'Coloc Garçons Sidi Maârouf - Nearshore',
+        'description': 'Appart pour Geeks et Ingénieurs ! Proche Casanearshore. Fibre 100 Méga installée. On cherche un 3ème profil tech. Calme absolu pour coder la nuit.',
+        'price': 1500,
+        'city': 'Casablanca',
+        'type': 'Appartement',
+        'is_verified': False,
+        'lat': 33.5356, 'lng': -7.6528,
+        'owner': 'Simo (Dev)'
+    },
 
-# 2. CASABLANCA (Maarif / Route El Jadida)
-Listing.objects.create(
-    title="Résidence Universitaire Ziraoui",
-    city="Casablanca",
-    university_nearby="Lycée Lyautey / Médecine",
-    price=1700,
-    type="RESIDENCE",
-    gender_preference="Garçons",
-    is_bills_included=True,
-    is_verified=True,
-    lat=33.5936, lng=-7.6322,
-    description="Chambre individuelle dans résidence Ziraoui. Cadre studieux, bibliothèque et réfectoire sur place.",
-    image_url="https://images.unsplash.com/photo-1596204099684-2661c9255a6d?w=800"
-)
-Listing.objects.create(
-    title="Studio Haut Standing Anfa City",
-    city="Casablanca",
-    university_nearby="Université Mundiapolis",
-    price=3500,
-    type="STUDIO",
-    gender_preference="Filles",
-    is_bills_included=True,
-    is_verified=True,
-    lat=33.5595, lng=-7.6681,
-    description="Studio neuf à Anfa City. Proche CFC. Meublé moderne, climatisation et fibre optique.",
-    image_url="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
-)
+    # --- TANGER ---
+    {
+        'title': 'Appart Boukhalef - Face à l\'ENSA',
+        'description': 'Littéralement à 2 minutes de l\'ENSA et la FST en pyjama. Résidence Al Amana sécurisée. 2 chambres, salon marocain. Idéal pour groupe de 3 ou 4 étudiants.',
+        'price': 2500,
+        'city': 'Tanger',
+        'type': 'Appartement',
+        'is_verified': True,
+        'lat': 35.7369, 'lng': -5.8941,
+        'owner': 'Haj Boukhalef'
+    },
+    {
+        'title': 'Coloc Vue Mer - Malabata',
+        'description': 'Grand luxe à petit prix si on partage ! Appartement vue sur mer, proche Gare TGV et City Mall. Pour étudiantes ENCG Tanger. 3 Chambres dispos.',
+        'price': 1600,
+        'city': 'Tanger',
+        'type': 'Appartement',
+        'is_verified': False,
+        'lat': 35.7765, 'lng': -5.7942,
+        'owner': 'Mme Alaoui'
+    },
+    {
+        'title': 'Studio Centre Ville - Iberia',
+        'description': 'Studio cosy pour étudiant solitaire. Quartier Iberia, tout est à côté (cafés, snacks, taxis). Loyer un peu cher mais zéro transport à payer.',
+        'price': 2800,
+        'city': 'Tanger',
+        'type': 'Studio',
+        'is_verified': False,
+        'lat': 35.7801, 'lng': -5.8123,
+        'owner': 'Agence du Nord'
+    },
 
-# 3. TANGER (ENCG / Malabata)
-Listing.objects.create(
-    title="The Student House Tanger",
-    city="Tanger",
-    university_nearby="ENCG Tanger",
-    price=2200,
-    type="RESIDENCE",
-    gender_preference="Garçons",
-    is_bills_included=True,
-    is_verified=True,
-    lat=35.7663, lng=-5.8335,
-    description="Résidence privée première cité à Tanger. Navette gratuite vers ENCG. Salle de sport incluse.",
-)
+    # --- IFRANE ---
+    {
+        'title': 'Chalet Bois - Près AUI (Al Akhawayn)',
+        'description': 'Le rêve Ifranais. Chalet avec cheminée pour l\'hiver. À 10min à pied du campus AUI. Parfait pour colocation à 4. Chauffage central inclus (important !).',
+        'price': 5000,
+        'city': 'Ifrane',
+        'type': 'Maison',
+        'is_verified': True,
+        'lat': 33.5366, 'lng': -5.1102,
+        'owner': 'AUI Housing'
+    }
+]
 
-# 4. AGADIR (Universiapolis)
-Listing.objects.create(
-    title="Campus Universiapolis",
-    city="Agadir",
-    university_nearby="Universiapolis",
-    price=1800,
-    type="RESIDENCE",
-    gender_preference="Filles",
-    is_bills_included=True,
-    is_verified=True,
-    lat=30.4061, lng=-9.5539,
-    description="Logement au cœur du campus. Accès direct aux salles de cours et restaurants universitaires.",
-)
+# 4. Injection
+print(f'🏗️ Création de {len(listings_data)} annonces (Mode Texte)...')
 
-# 5. IFRANE (AUI)
-Listing.objects.create(
-    title="Chambre Centre Ville Ifrane",
-    city="Ifrane",
-    university_nearby="Al Akhawayn (AUI)",
-    price=2500,
-    type="COLOC",
-    gender_preference="Filles",
-    is_bills_included=True,
-    is_verified=False,
-    lat=33.5366, lng=-5.1066,
-    description="Chambre chaleureuse avec chauffage central (très important ici !). À 5min de la navette AUI.",
-    owner_name="Salma"
-)
+for data in listings_data:
+    Listing.objects.create(
+        title=data['title'],
+        description=data['description'],
+        price=data['price'],
+        city=data['city'],
+        type=data['type'],
+        is_verified=data['is_verified'],
+        lat=data['lat'],
+        lng=data['lng'],
+        owner_name=data['owner'],
+        # image_url supprimé ou vide pour ne pas avoir de photo
+        image_url='', 
+        gender_preference=random.choice(['Mixte', 'Filles', 'Garçons'])
+    )
+    print(f"  ✅ Ajouté : {data['title']}")
 
-print('✅ 7 Annonces Réalistes Importées (Rabat, Casa, Tanger, Agadir, Ifrane).')
-
-# Added Residence Ziraoui (Casablanca) - Real Data
-
-# Added Studios in Agdal (Rabat)
-
-# Added Bayt Al Maârifa (Tanger)
+print('\n✨ BASE DE DONNÉES MISE À JOUR (SANS PHOTOS) !')
