@@ -2,7 +2,7 @@
 
 **Module : Digital Creativity**
 
-Bonjour ! Voici le rendu final de notre projet **StudentHouse**, une solution interactive pour le logement étudiant au Maroc.
+Bonjour ! Voici le guide complet pour installer et tester **StudentHouse**, notre solution interactive pour le logement étudiant au Maroc.
 
 ---
 
@@ -17,48 +17,57 @@ Nous sommes quatre étudiants de l'**ENSA** ayant collaboré sur ce projet :
 
 ---
 
-## 💡 Concept & Vision
+## 💡 Concept
 
-Trouver un logement au Maroc (Rabat, Casablanca, Tanger...) est un défi majeur pour tout étudiant. Notre application, **StudentHouse**, a pour but de centraliser les offres de manière fiable et interactive.
-
-### Nos points forts :
-1.  **Réalisme des données** : Intégration des résidences réelles (*Bayt Al Maârifa*, *Ziraoui*, *Campus Universiapolis*...).
-2.  **Transparence** : Distinction claire entre les résidences officielles (Vérifiées) et les annonces de particuliers (Colocations).
-3.  **Respect culturel** : Filtrage strict par genre (**Filles / Garçons**), essentiel dans le contexte marocain.
-4.  **Interaction directe** : Mise en relation simplifiée via l'**API WhatsApp** avec les propriétaires.
+Trouver un logement au Maroc est un défi. **StudentHouse** centralise les offres de manière fiable :
+* **Réalisme** : Intégration de résidences réelles (*Bayt Al Maârifa*, *Ziraoui*...).
+* **Respect culturel** : Filtrage par genre (**Filles / Garçons**).
+* **Interaction** : Mise en relation simplifiée via **WhatsApp**.
 
 ---
 
-## 🛠️ Guide d'Installation Rapide
+## 🛠️ Guide d'Installation (Étape par Étape)
 
-### 1. Préparer l'environnement
+Ouvrez votre terminal (PowerShell ou Bash) et suivez ces étapes dans l'ordre :
+
+### 1. Récupérer le projet
+Clonez le dépôt GitHub sur votre machine :
 \\\ash
-# Activer l'environnement virtuel
+git clone https://github.com/tijabdel/Digital-Creativity.git
+cd Digital-Creativity
+\\\
+
+### 2. Configurer l'environnement
+Créez et activez un environnement virtuel, puis installez les bibliothèques :
+\\\ash
+# Création de l'environnement
+python -m venv venv
+
+# Activation (Windows)
 .\venv\Scripts\activate
 
-# Installer les outils nécessaires
+# Installation des dépendances
 pip install -r requirements.txt
 \\\
 
-### 2. Initialiser la Base de Données
-Nous avons inclus un script de "Seeding" pour charger des exemples concrets dès le premier lancement.
+### 3. Initialiser la Base de Données
+Cette étape crée les tables et injecte les annonces réelles pour la démonstration :
 \\\ash
 python manage.py makemigrations housing
 python manage.py migrate
 python seed.py
 \\\
 
-### 3. Lancer l'application
+### 4. Lancer l'application
 \\\ash
 python manage.py runserver
 \\\
-Accès local : **http://127.0.0.1:8000/**
+👉 Accès local : **http://127.0.0.1:8000/**
 
 ---
 
 ## 🎨 Choix du Design
-
-Nous avons opté pour un **Light Mode** minimaliste, inspiré des standards actuels (Airbnb, Apple). Ce choix permet une meilleure lisibilité des informations et met en valeur les photos des logements ainsi que la carte interactive (Leaflet.js).
+Le projet utilise un **Light Mode** minimaliste (inspiré d'Airbnb) pour garantir une lisibilité optimale. La carte interactive utilise *Leaflet.js* avec un rendu clair pour une navigation fluide entre les quartiers étudiants.
 
 ---
 *Projet réalisé avec passion par notre équipe à l'ENSA Tanger.*
