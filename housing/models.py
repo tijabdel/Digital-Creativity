@@ -106,3 +106,5 @@ class Booking(models.Model):
 # fix: erreur de pagination quand il y a plus de 50 annonces
 
 # feat: ajout d'une méthode 'get_absolute_url' aux modèles
+
+# debug: résolution d'un problème d'encodage UTF-8
