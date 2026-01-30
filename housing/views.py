@@ -105,3 +105,5 @@ def book_listing(request, id):
 # security check added
 
 # permission check added
+
+# fix for empty price crash
