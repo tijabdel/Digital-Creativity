@@ -75,3 +75,5 @@ def book_listing(request, id):
 # Redirect loop fix
 
 # SECURITY: Validation des entrées login
+
+# Session flush on logout
