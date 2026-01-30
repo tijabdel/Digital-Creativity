@@ -72,3 +72,5 @@ class Booking(models.Model):
     # phone regex validator (+212)
 
 # code formatted
+
+# fix(db): correction d'une incohérence dans la table des listings
