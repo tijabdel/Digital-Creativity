@@ -81,3 +81,5 @@ X_FRAME_OPTIONS = 'DENY'
 # Secret key should be rotated in production
 
 SESSION_COOKIE_HTTPONLY = True
+
+# AUTH: Configuration du système d'authentification
