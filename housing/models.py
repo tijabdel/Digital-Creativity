@@ -62,3 +62,5 @@ class Booking(models.Model):
     class Meta: ordering = ['-created_at']
 
 # verbose name fix
+
+# verified by tijani
