@@ -6,3 +6,5 @@
 # added search_fields
 
 # saad's changes verified
+
+admin.site.site_header = 'StudentHouse Administration'
