@@ -104,3 +104,5 @@ class Booking(models.Model):
 # review: prise en compte des remarques de Assia sur le dashboard
 
 # fix: erreur de pagination quand il y a plus de 50 annonces
+
+# feat: ajout d'une méthode 'get_absolute_url' aux modèles
