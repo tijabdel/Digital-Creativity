@@ -50,3 +50,5 @@ Pillow
 # setup: amélioration du script d'installation windows
 
 # ux: validation des maquettes avec Assia
+
+# final: vérification de tout le projet avant rendu
