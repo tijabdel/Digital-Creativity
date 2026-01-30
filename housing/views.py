@@ -97,3 +97,5 @@ def book_listing(request, id):
 # complex query logic for city filter
 
 # optimization
+
+# code cleanup
