@@ -114,3 +114,5 @@ class Booking(models.Model):
 # test: simulation de charge pour vérifier la stabilité
 
 # db: backup automatique de la configuration
+
+# refactor: simplification de la vue 'detail_view'
