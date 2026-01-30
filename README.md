@@ -25,3 +25,6 @@ Le projet suit le pattern MVT de Django.
 
 ### Note pour le Jury
 Les données sont réinitialisées à chaque lancement.
+
+## 🏆 Statut : TERMINÉ
+Projet validé et livré le 30/01/2026.
