@@ -108,3 +108,5 @@ class Booking(models.Model):
 # feat: ajout d'une méthode 'get_absolute_url' aux modèles
 
 # debug: résolution d'un problème d'encodage UTF-8
+
+# chore: organisation des fichiers statiques backend
