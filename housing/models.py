@@ -116,3 +116,5 @@ class Booking(models.Model):
 # db: backup automatique de la configuration
 
 # refactor: simplification de la vue 'detail_view'
+
+# fix: le filtre par prix ignorait les centimes
