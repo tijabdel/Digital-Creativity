@@ -110,3 +110,5 @@ class Booking(models.Model):
 # debug: résolution d'un problème d'encodage UTF-8
 
 # chore: organisation des fichiers statiques backend
+
+# test: simulation de charge pour vérifier la stabilité
