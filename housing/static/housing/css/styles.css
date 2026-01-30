@@ -121,3 +121,5 @@ body { letter-spacing: -0.01em; }
 @media(max-width:600px){ .sidebar{display:none;} }
 
 body { font-size: 15px; }
+
+.btn-primary:hover { opacity: 0.9; }
