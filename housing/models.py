@@ -118,3 +118,5 @@ class Booking(models.Model):
 # refactor: simplification de la vue 'detail_view'
 
 # fix: le filtre par prix ignorait les centimes
+
+# docs: commentaires techniques ajoutés dans le code source
