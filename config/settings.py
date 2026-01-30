@@ -70,3 +70,5 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'housing/static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH CONFIGURATION
