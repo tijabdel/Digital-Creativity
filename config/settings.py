@@ -99,3 +99,6 @@ SESSION_COOKIE_HTTPONLY = True
 # STATICFILES_FINDERS update
 
 # templates path fix
+
+# Configuration des fichiers statiques pour le déploiement
+STATIC_ROOT = BASE_DIR / 'staticfiles'
