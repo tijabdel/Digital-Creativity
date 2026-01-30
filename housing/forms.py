@@ -17,3 +17,5 @@ class ListingForm(forms.ModelForm):
         }
 
 # label tweaks
+
+# price validation
