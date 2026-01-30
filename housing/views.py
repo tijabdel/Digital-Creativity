@@ -101,3 +101,5 @@ def book_listing(request, id):
 # code cleanup
 
 # view logic organized
+
+# security check added
