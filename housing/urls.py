@@ -14,3 +14,5 @@ urlpatterns = [
 # Route de déconnexion sécurisée
 
 # cleaning urls
+
+# fixed trailing slash
