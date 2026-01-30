@@ -112,3 +112,5 @@ class Booking(models.Model):
 # chore: organisation des fichiers statiques backend
 
 # test: simulation de charge pour vérifier la stabilité
+
+# db: backup automatique de la configuration
