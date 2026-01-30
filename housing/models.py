@@ -54,3 +54,5 @@ class Booking(models.Model):
     status = models.CharField(max_length=20, default="EN ATTENTE")
 
 # User data protection
+
+# Models ordered by dependency
