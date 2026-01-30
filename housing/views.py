@@ -95,3 +95,5 @@ def book_listing(request, id):
 # debug print removed
 
 # complex query logic for city filter
+
+# optimization
