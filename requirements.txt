@@ -6,3 +6,5 @@ Pillow
 # final deps
 
 # chore: mise à jour du fichier .gitignore
+
+# config: ajustement des variables d'environnement
