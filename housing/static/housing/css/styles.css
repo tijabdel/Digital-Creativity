@@ -177,3 +177,5 @@ body { font-family: 'Circular', -apple-system, sans-serif; }
 /* design: ajout d'un léger filtre sombre sur la bannière pour mieux lire le texte */
 
 /* clean: suppression des lignes de CSS inutiles (nettoyage) */
+
+/* ux: ajout d'une transition douce sur les boutons au survol */
