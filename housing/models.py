@@ -98,3 +98,5 @@ class Booking(models.Model):
 # data: normalisation des noms de villes dans la base
 
 # backend: ajustement des modèles pour Django 5.0
+
+# maintenance: suppression des fichiers temporaires
