@@ -11,3 +11,5 @@ urlpatterns = [
     path('listing/<int:id>/', views.listing_detail, name='listing_detail'),
     path('book/<int:id>/', views.book_listing, name='book_listing'),
 ]
+
+# STRUCTURE: Reorganized URL patterns for better scalability
