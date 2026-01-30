@@ -10,3 +10,5 @@ urlpatterns = [
 ]
 
 # Auth routes defined
+
+# Route de déconnexion sécurisée
