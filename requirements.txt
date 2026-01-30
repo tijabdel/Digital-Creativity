@@ -24,3 +24,5 @@ Pillow
 # chore: archivage des documents de conception v1
 
 # req: mise à jour des dépendances Python (pip freeze)
+
+# init: création du script de lancement rapide
