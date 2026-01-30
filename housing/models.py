@@ -64,3 +64,5 @@ class Booking(models.Model):
 # verbose name fix
 
 # verified by tijani
+
+    # indexing added for speed
