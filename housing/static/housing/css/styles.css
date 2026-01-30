@@ -115,3 +115,5 @@ body { letter-spacing: -0.01em; }
 .btn-primary:active { transform: scale(0.98); }
 
 :root { --primary-hover: #a010d0; }
+
+/* card shadow was too dark */
