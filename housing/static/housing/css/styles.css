@@ -105,3 +105,5 @@ h1, h2, h3 { color: #1a202c; margin-top: 0; }
 }
 /* TWEAK BUDGET INPUTS */
 .filter-label { margin-top: 15px; display: block; font-weight: bold; color: #718096; }
+
+/* Tweaking card shadows */ .listing-card { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
