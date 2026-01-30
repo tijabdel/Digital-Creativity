@@ -63,3 +63,5 @@ def book_listing(request, id):
     listing = get_object_or_404(Listing, id=id)
     Booking.objects.create(user_name=request.session.get('user_name'), listing=listing, status="CONFIRMÉ")
     return redirect('dashboard')
+
+# Login view handles authentication
