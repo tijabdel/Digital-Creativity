@@ -12,3 +12,5 @@ Pillow
 # docs: mise à jour du cahier des charges dans le README
 
 # arch: restructuration des dossiers templates
+
+# merge: validation des pull requests de l'équipe
