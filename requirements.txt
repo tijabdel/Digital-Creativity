@@ -16,3 +16,5 @@ Pillow
 # merge: validation des pull requests de l'équipe
 
 # ci: configuration du pipeline de déploiement
+
+# project: mise à jour du tableau de bord Notion
