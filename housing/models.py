@@ -78,3 +78,5 @@ class Booking(models.Model):
 # refactor: optimisation de la boucle de recherche pour la vitesse
 
 # test: ajout de tests unitaires pour le module housing
+
+# chore: nettoyage des imports inutilisés dans views.py
