@@ -80,3 +80,5 @@ class Booking(models.Model):
 # test: ajout de tests unitaires pour le module housing
 
 # chore: nettoyage des imports inutilisés dans views.py
+
+# db: mise à jour des index pour les requêtes géographiques
