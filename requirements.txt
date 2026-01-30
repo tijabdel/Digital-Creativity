@@ -46,3 +46,5 @@ Pillow
 # release: préparation de la version alpha 0.9
 
 # meeting: compte rendu de la réunion technique
+
+# setup: amélioration du script d'installation windows
