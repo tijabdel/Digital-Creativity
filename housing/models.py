@@ -58,3 +58,5 @@ class Booking(models.Model):
 # Models ordered by dependency
 
 # added ordering
+
+    class Meta: ordering = ['-created_at']
