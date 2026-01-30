@@ -34,3 +34,5 @@ Pillow
 # docs: ajout des diagrammes UML dans le dossier docs
 
 # config: passage en mode DEBUG=False pour test
+
+# arch: définition des standards de code (PEP8)
