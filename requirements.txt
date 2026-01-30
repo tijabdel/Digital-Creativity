@@ -36,3 +36,5 @@ Pillow
 # config: passage en mode DEBUG=False pour test
 
 # arch: définition des standards de code (PEP8)
+
+# manager: nettoyage des branches git obsolètes
