@@ -179,3 +179,5 @@ body { font-family: 'Circular', -apple-system, sans-serif; }
 /* clean: suppression des lignes de CSS inutiles (nettoyage) */
 
 /* ux: ajout d'une transition douce sur les boutons au survol */
+
+/* fix: alignement des icônes dans la barre de navigation */
