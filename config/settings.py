@@ -102,3 +102,5 @@ SESSION_COOKIE_HTTPONLY = True
 
 # Configuration des fichiers statiques pour le déploiement
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# conflict fixed
