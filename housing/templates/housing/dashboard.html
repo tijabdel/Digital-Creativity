@@ -1,0 +1,38 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div style="padding: 40px;">
+    <div class="quest-header">
+        <div class="quest-title">QUEST LOG // <span class="quest-user">{{ user|upper }}</span> <span class="lvl-badge">LVL 3</span></div>
+        <div style="color: #666; font-size: 12px; margin-top: 5px;">STATUS: ONLINE • ROLE: RESIDENT</div>
+    </div>
+    
+    <div class="section-title">ACTIVE MISSIONS (RESERVATIONS)</div>
+    
+    {% if bookings %}
+        <div style="display: grid; gap: 20px;">
+        {% for b in bookings %}
+            <div style="background: #0f0f16; border: 1px solid #00f2ea; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 0 15px rgba(0, 242, 234, 0.1);">
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div style="width: 80px; height: 80px; background: url('{{ b.listing.image_url }}') center/cover; border-radius: 8px;"></div>
+                    <div>
+                        <h3 style="margin: 0; color: white;">{{ b.listing.title }}</h3>
+                        <p style="margin: 5px 0 0 0; color: #888; font-size: 14px;">📍 {{ b.listing.city }} • {{ b.listing.price }} DH</p>
+                        <span style="display: inline-block; margin-top: 8px; font-size: 10px; background: rgba(0, 242, 234, 0.2); color: #00f2ea; padding: 3px 8px; border-radius: 4px;">{{ b.status }}</span>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 12px; color: #666; margin-bottom: 10px;">ID MISSION: #{{ b.id }}8842</div>
+                    <button style="background: #222; color: #fff; border: 1px solid #444; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Gérer le dossier</button>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 50px; border: 1px dashed #333; border-radius: 10px; color: #555;">
+            AUCUNE MISSION EN COURS<br><small>Explorez la carte pour trouver votre prochaine base.</small>
+            <br><br>
+            <a href="{% url 'explorer' %}" style="color: #bc13fe; text-decoration: none;">INITIALISER LA RECHERCHE &rarr;</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
