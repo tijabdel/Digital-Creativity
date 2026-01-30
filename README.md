@@ -22,12 +22,3 @@ Ce projet a été réalisé dans le cadre de notre formation académique. Il uti
 
 ## Architecture
 Le projet suit le pattern MVT de Django.
-
-### Note pour le Jury
-Les données sont réinitialisées à chaque lancement.
-
-## 🏆 Statut : TERMINÉ
-Projet validé et livré le 30/01/2026.
-
-
-> **Projet Clôturé par le Chef de Projet (Tijani)** - Prêt pour le Jury.
