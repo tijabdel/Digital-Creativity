@@ -73,3 +73,5 @@ def book_listing(request, id):
 # Access restricted to authenticated users
 
 # Redirect loop fix
+
+# SECURITY: Validation des entrées login
