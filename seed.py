@@ -109,3 +109,5 @@ Listing.objects.create(
 )
 
 print('✅ 7 Annonces Réalistes Importées (Rabat, Casa, Tanger, Agadir, Ifrane).')
+
+# Added Residence Ziraoui (Casablanca) - Real Data
