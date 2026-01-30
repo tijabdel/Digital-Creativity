@@ -79,3 +79,5 @@ def book_listing(request, id):
 # Session flush on logout
 
 # Check user permissions
+
+# Redirect loop fix implementation
