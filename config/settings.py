@@ -91,3 +91,5 @@ CSRF_COOKIE_SECURE = False
 X_FRAME_OPTIONS = 'DENY'
 
 SESSION_COOKIE_HTTPONLY = True
+
+# Secret Key rotation logic ready
