@@ -120,3 +120,5 @@ class Booking(models.Model):
 # fix: le filtre par prix ignorait les centimes
 
 # docs: commentaires techniques ajoutés dans le code source
+
+# merge: fusion des correctifs de la branche develop
