@@ -70,3 +70,5 @@ class Booking(models.Model):
 # cleanup logic ready
 
     # phone regex validator (+212)
+
+# code formatted
