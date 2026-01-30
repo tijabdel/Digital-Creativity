@@ -1,0 +1,44 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; padding: 20px;">
+    <h2 style="color: #bc13fe; text-align: center; margin-bottom: 30px;">PROPOSER UN LOGEMENT</h2>
+    <form method="POST" style="background: #111; padding: 30px; border-radius: 15px; border: 1px solid #333;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">TITRE DE L'ANNONCE</label>
+            {{ form.title }}
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">VILLE</label>
+                {{ form.city }}
+            </div>
+            <div>
+                <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">PRIX (DH)</label>
+                {{ form.price }}
+            </div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">GENRE ACCEPTÉ</label>
+            {{ form.gender_preference }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">WHATSAPP (Pour contact)</label>
+            {{ form.whatsapp_number }}
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="color: #888; font-size: 12px; display:block; margin-bottom:5px;">DESCRIPTION</label>
+            {{ form.description }}
+        </div>
+
+        <button type="submit" style="width: 100%; padding: 15px; background: #bc13fe; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 16px;">
+            PUBLIER MAINTENANT
+        </button>
+    </form>
+</div>
+<style>
+    .form-control { width: 100%; padding: 10px; background: #1a1a25; border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; }
+    .form-control:focus { border-color: #bc13fe; outline: none; }
+</style>
+{% endblock %}

@@ -1,63 +1,58 @@
 ﻿{% extends 'base.html' %}
 {% block content %}
-<div style="display: flex; height: calc(100vh - 70px);">
-    
-    <div style="width: 300px; background: #0f0f16; border-right: 1px solid #333; padding: 20px; overflow-y: auto;">
-        <h3 style="color: white; margin-top: 0;">🎯 Critères</h3>
+<div style="display: flex; height: calc(100vh - 72px);">
+    <div class="sidebar" style="width: 320px; overflow-y: auto;">
+        <h3 style="margin-bottom: 20px; font-size: 18px;">🎯 Filtrer ma recherche</h3>
         <form method="GET" action="{% url 'explorer' %}">
-            
-            <label style="color: #888; font-size: 11px; display: block; margin-bottom: 5px; font-weight:bold;">VILLE</label>
-            <select name="city" style="width: 100%; padding: 10px; background: #1a1a25; color: white; border: 1px solid #333; border-radius: 5px; margin-bottom: 15px;">
+            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase;">Ville</label>
+            <select name="city" class="form-control">
                 <option value="All">Tout le Maroc</option>
                 <option value="Rabat" {% if selected_city == 'Rabat' %}selected{% endif %}>Rabat</option>
                 <option value="Casablanca" {% if selected_city == 'Casablanca' %}selected{% endif %}>Casablanca</option>
                 <option value="Tanger" {% if selected_city == 'Tanger' %}selected{% endif %}>Tanger</option>
-                <option value="Marrakech" {% if selected_city == 'Marrakech' %}selected{% endif %}>Marrakech</option>
+                <option value="Ifrane" {% if selected_city == 'Ifrane' %}selected{% endif %}>Ifrane</option>
             </select>
 
-            <label style="color: #bc13fe; font-size: 11px; display: block; margin-bottom: 5px; font-weight:bold;">RÉSERVÉ POUR</label>
-            <select name="gender" style="width: 100%; padding: 10px; background: #1a1a25; color: white; border: 1px solid #bc13fe; border-radius: 5px; margin-bottom: 15px;">
-                <option value="All">Tout afficher</option>
-                <option value="Filles" {% if selected_gender == 'Filles' %}selected{% endif %}>🚺 Étudiantes (Filles)</option>
-                <option value="Garçons" {% if selected_gender == 'Garçons' %}selected{% endif %}>🚹 Étudiants (Garçons)</option>
+            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 10px; display:block;">Genre</label>
+            <select name="gender" class="form-control">
+                <option value="All">Mixte / Tous</option>
+                <option value="Filles" {% if selected_gender == 'Filles' %}selected{% endif %}>Filles Uniquement</option>
+                <option value="Garçons" {% if selected_gender == 'Garçons' %}selected{% endif %}>Garçons Uniquement</option>
             </select>
 
-            <label style="color: #888; font-size: 11px; display: block; margin-bottom: 5px; font-weight:bold;">TYPE</label>
-            <select name="type" style="width: 100%; padding: 10px; background: #1a1a25; color: white; border: 1px solid #333; border-radius: 5px; margin-bottom: 15px;">
-                <option value="All">Tous</option>
-                <option value="STUDIO" {% if selected_type == 'STUDIO' %}selected{% endif %}>Studio</option>
-                <option value="COLOC" {% if selected_type == 'COLOC' %}selected{% endif %}>Colocation</option>
-            </select>
+            <label style="font-size: 12px; font-weight: 700; color: #718096; text-transform: uppercase; margin-top: 10px; display:block;">Budget Max</label>
+            <input type="range" name="price" min="500" max="8000" step="100" oninput="document.getElementById('pDisp').innerText = this.value + ' DH'" style="width: 100%; accent-color: #bc13fe;">
+            <div id="pDisp" style="text-align: right; color: #bc13fe; font-weight: bold;">-- DH</div>
 
-            <label style="color: #888; font-size: 11px; display: block; margin-bottom: 5px; font-weight:bold;">BUDGET MAX</label>
-            <input type="range" name="price" min="500" max="6000" step="100" oninput="document.getElementById('priceDisp').innerText = this.value + ' DH'" style="width: 100%;">
-            <div id="priceDisp" style="text-align: right; color: #00f2ea; font-size: 14px; margin-bottom: 20px;">-- DH</div>
-
-            <button type="submit" style="width: 100%; padding: 12px; background: #bc13fe; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer;">ACTUALISER</button>
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Actualiser les résultats</button>
         </form>
     </div>
 
-    <div style="flex: 1; padding: 20px; overflow-y: auto;">
-        <div id="map" style="height: 200px; width: 100%; border-radius: 12px; border: 2px solid #333; margin-bottom: 20px;"></div>
+    <div style="flex: 1; padding: 30px; overflow-y: auto; background: #f7f9fc;">
         
-        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+        <div id="map" style="height: 300px; width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></div>
+        
+        <h3 style="margin-bottom: 20px;">Logements disponibles</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
             {% for l in listings %}
             <div class="listing-card">
                 <div class="card-img" style="background-image: url('{{ l.image_url }}');">
-                    <span style="position: absolute; top: 10px; left: 10px; background: {% if l.gender_preference == 'Filles' %}#ff007f{% else %}#0077ff{% endif %}; color: white; font-size: 10px; padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform:uppercase;">
-                        {% if l.gender_preference == 'Filles' %}🚺 Filles{% else %}🚹 Garçons{% endif %}
-                    </span>
-                    <span class="badge-type" style="background: rgba(0,0,0,0.8);">{{ l.type }}</span>
+                    <span class="badge-type">{{ l.type }}</span>
+                    {% if l.is_verified %}
+                        <span style="position: absolute; top: 12px; right: 12px; background: #38b2ac; color: white; font-size: 10px; padding: 4px 8px; border-radius: 20px; font-weight: bold;">✓ VÉRIFIÉ</span>
+                    {% endif %}
                 </div>
-                <div class="card-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: #888; font-size: 11px;">📍 {{ l.city }}</span>
-                        <span style="color: #bc13fe; font-size: 11px; font-weight: bold;">🏫 {{ l.university_nearby }}</span>
+                <div style="padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">{{ l.title }}</h3>
+                            <p class="text-muted" style="margin: 0;">📍 {{ l.city }} • {{ l.university_nearby }}</p>
+                        </div>
                     </div>
-                    <h3 class="card-title" style="margin: 5px 0;">{{ l.title }}</h3>
-                    <div class="card-footer">
-                        <span class="price">{{ l.price }} DH</span>
-                        <a href="{% url 'listing_detail' l.id %}" class="btn-contact" style="text-decoration:none;">Détails</a>
+                    <hr style="border: 0; border-top: 1px solid #edf2f7; margin: 12px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 18px;">{{ l.price }} DH</span>
+                        <a href="{% url 'listing_detail' l.id %}" style="color: #bc13fe; font-weight: 600; font-size: 14px; text-decoration: none;">Voir détails →</a>
                     </div>
                 </div>
             </div>
@@ -67,11 +62,18 @@
 </div>
 
 <script>
-    var map = L.map('map').setView([33.5731, -7.5898], 5);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+    var map = L.map('map').setView([33.5731, -7.5898], 6);
+    // CARTE CLAIRE (Positron)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CartoDB'
+    }).addTo(map);
+
     var data = {{ map_data|safe }};
     data.forEach(h => {
-        L.marker([h.lat, h.lng]).addTo(map).bindPopup('<b style="color:black">'+h.title+'</b><br><a href="/listing/'+h.id+'/" style="color:#bc13fe">Voir</a>');
+        var color = h.verified ? '#38b2ac' : '#bc13fe';
+        L.circleMarker([h.lat, h.lng], { radius: 8, color: 'white', weight: 2, fillColor: color, fillOpacity: 0.9 })
+         .addTo(map)
+         .bindPopup('<b style="font-family:sans-serif">'+h.title+'</b><br>'+h.price+' DH');
     });
 </script>
 {% endblock %}

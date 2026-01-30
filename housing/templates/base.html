@@ -1,18 +1,21 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Student House</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHouse | Logement Étudiant</title>
     <link rel="stylesheet" href="/static/housing/css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="brand">Student House</div>
-        <div class="nav-links">
-            <a href="{% url 'dashboard' %}">Mon Espace</a>
-            <a href="{% url 'explorer' %}" class="active">Explorer</a>
-            <a href="#">Carte</a>
+<body style="font-family: 'Inter', sans-serif;">
+    <nav>
+        <a href="{% url 'dashboard' %}" class="logo">StudentHouse.ma</a>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <a href="{% url 'dashboard' %}" style="text-decoration: none; color: #4a5568; font-weight: 500;">Mon Espace</a>
+            <a href="{% url 'explorer' %}" style="text-decoration: none; color: #4a5568; font-weight: 500;">Explorer</a>
+            <a href="{% url 'add_listing' %}" class="btn-primary" style="font-size: 14px;">+ Publier</a>
         </div>
     </nav>
     {% block content %}{% endblock %}

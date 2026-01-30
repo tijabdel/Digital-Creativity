@@ -1,35 +1,49 @@
 ﻿from django.db import models
+from django.utils import timezone
 
 class Listing(models.Model):
     CITY_CHOICES = [
         ('Rabat', 'Rabat'), ('Casablanca', 'Casablanca'), ('Marrakech', 'Marrakech'),
-        ('Tanger', 'Tanger'), ('Kenitra', 'Kenitra'), ('Agadir', 'Agadir'),
-        ('Fes', 'Fès'), ('Meknes', 'Meknès'), ('Ifrane', 'Ifrane'), ('Oujda', 'Oujda')
+        ('Tanger', 'Tanger'), ('Agadir', 'Agadir'), ('Ifrane', 'Ifrane'),
+        ('Fes', 'Fès'), ('Meknes', 'Meknès'), ('Kenitra', 'Kénitra')
     ]
     
-    # STRICT GENDER CHOICES
+    TYPE_CHOICES = [
+        ('STUDIO', 'Studio Individuel'),
+        ('COLOC', 'Colocation (Chambre)'),
+        ('RESIDENCE', 'Résidence Étudiante (Privée/Publique)')
+    ]
+
     GENDER_CHOICES = [
         ('Filles', 'Réservé aux Étudiantes (Filles)'), 
         ('Garçons', 'Réservé aux Étudiants (Garçons)')
     ]
     
-    title = models.CharField(max_length=200)
-    city = models.CharField(max_length=50, choices=CITY_CHOICES)
-    university_nearby = models.CharField(max_length=100, default="Université")
-    price = models.IntegerField()
-    is_bills_included = models.BooleanField(default=False)
+    # Info de base
+    title = models.CharField(max_length=200, verbose_name="Titre de l'annonce")
+    city = models.CharField(max_length=50, choices=CITY_CHOICES, verbose_name="Ville")
+    university_nearby = models.CharField(max_length=100, default="Université", verbose_name="Proche de")
+    price = models.IntegerField(verbose_name="Prix (DH/mois)")
+    is_bills_included = models.BooleanField(default=False, verbose_name="Charges comprises")
     
-    # Updated Logic
-    gender_preference = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Garçons")
+    # Critères
+    type = models.CharField(max_length=50, choices=TYPE_CHOICES, default='STUDIO')
+    gender_preference = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Garçons", verbose_name="Genre")
     
-    image_url = models.URLField()
-    type = models.CharField(max_length=50) 
-    tags = models.CharField(max_length=200) 
-    lat = models.FloatField()
-    lng = models.FloatField()
-    description = models.TextField(default="Logement respectueux et calme.")
-    amenities = models.CharField(max_length=300, default="Wifi,Sécurité")
-    whatsapp_number = models.CharField(max_length=20, default="212600000000")
+    # Détails
+    description = models.TextField(default="Description du logement...")
+    amenities = models.CharField(max_length=300, default="Wifi,Sécurité", verbose_name="Équipements")
+    
+    # Contact & Media
+    whatsapp_number = models.CharField(max_length=20, default="212600000000", help_text="Format: 2126XXXXXXXX")
+    image_url = models.URLField(default="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800")
+    
+    # Technique
+    lat = models.FloatField(default=33.5731)
+    lng = models.FloatField(default=-7.5898)
+    created_at = models.DateTimeField(default=timezone.now)
+    is_verified = models.BooleanField(default=False) # True = Admin/Residence officielle, False = Étudiant
+    owner_name = models.CharField(max_length=100, default="Anonyme")
 
     def __str__(self): return self.title
 
