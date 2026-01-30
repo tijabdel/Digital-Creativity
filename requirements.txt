@@ -48,3 +48,5 @@ Pillow
 # meeting: compte rendu de la réunion technique
 
 # setup: amélioration du script d'installation windows
+
+# ux: validation des maquettes avec Assia
