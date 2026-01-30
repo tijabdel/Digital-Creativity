@@ -10,7 +10,7 @@ Bonjour ! Voici le guide complet pour installer et tester **StudentHouse**, notr
 
 Nous sommes quatre étudiants de l'**ENSA** ayant collaboré sur ce projet :
 
-* **Assia Belaissia** (Frontend & Design Lead)
+* **Assia Belaissia**
 * **Salami Saad**
 * **Tijani Abdelbarie**
 * **Fatima Ezzahra Arfaoui**
