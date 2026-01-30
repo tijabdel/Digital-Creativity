@@ -56,3 +56,5 @@ class Booking(models.Model):
 # User data protection
 
 # Models ordered by dependency
+
+# added ordering
