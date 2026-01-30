@@ -94,3 +94,5 @@ class Booking(models.Model):
 # log: ajout de logs pour tracer les erreurs 404
 
 # fix: bug d'affichage des dates sur les anciens navigateurs
+
+# data: normalisation des noms de villes dans la base
