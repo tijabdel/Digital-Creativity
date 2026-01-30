@@ -42,3 +42,5 @@ Pillow
 # sync: synchronisation avec le repo de l'école
 
 # hotfix: correction urgente sur le fichier de config
+
+# release: préparation de la version alpha 0.9
