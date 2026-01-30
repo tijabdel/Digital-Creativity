@@ -85,3 +85,5 @@ SESSION_COOKIE_HTTPONLY = True
 # AUTH: Configuration du système d'authentification
 
 CSRF_COOKIE_SECURE = False
+
+# Password rules strict
