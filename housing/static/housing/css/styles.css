@@ -154,3 +154,5 @@ input:focus { border-color: #bc13fe; outline: none; }
 .card { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s; }
 
 .price-badge { position: absolute; top: 10px; right: 10px; background: white; font-weight: bold; }
+
+body { font-family: 'Circular', -apple-system, sans-serif; }
