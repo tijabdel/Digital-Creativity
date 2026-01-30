@@ -1,76 +1,64 @@
-﻿# 🏠 StudentHouse (Projet de Groupe)
+﻿# 🏠 StudentHouse (Projet Académique)
 
 **Module : Digital Creativity**
 
-Bonjour ! Voici le rendu final de notre projet **StudentHouse**.
-
-Nous sommes une équipe de 4 étudiants et nous avons voulu créer une solution concrète pour le logement étudiant au Maroc.
-Le but est simple : remplacer les fichiers Excel et les groupes Facebook par une vraie plateforme, fiable et moderne.
+Bonjour ! Voici le rendu final de notre projet **StudentHouse**, une solution interactive pour le logement étudiant au Maroc.
 
 ---
 
-## 👥 L'Équipe Projet
+## 👥 L'Équipe Projet (Groupe 4)
 
-* **Membre 1** : (Mets ton nom ici - ex: Assia Belaissia)
-* **Membre 2** : (Nom du collègue)
-* **Membre 3** : (Nom du collègue)
-* **Membre 4** : (Nom du collègue)
+Nous sommes quatre étudiants de l'**ENSA** ayant collaboré sur ce projet :
 
----
-
-## 💡 Pourquoi ce projet ?
-
-Nous sommes partis d'un constat réel : trouver un logement près de son école (ENCG, FST, UM5...) est souvent un calvaire.
-Nous avons donc conçu une application qui mise tout sur le **réalisme** et l'**interactivité**.
-
-### Nos fonctionnalités clés :
-1.  **Données Réelles & Vérifiées** :
-    * Nous avons intégré les vrais prix et localisations des résidences (ex: *Bayt Al Maârifa*, *Résidence Ziraoui*).
-    * Les logements vérifiés ont un badge spécial sur la carte.
-
-2.  **Interactivité Totale (Style "Moul Dar")** :
-    * L'application permet aux utilisateurs de **publier leur propre annonce**.
-    * Si vous libérez votre chambre, vous pouvez l'ajouter via l'espace "Publier".
-
-3.  **Communication Directe** :
-    * Pas de formulaires inutiles : un bouton **WhatsApp** ouvre directement la discussion avec le propriétaire.
-
-4.  **Design "Light Mode"** :
-    * Nous avons opté pour une interface épurée (style Airbnb) pour que l'information soit lisible et accessible.
+* **Assia Belaissia** (Frontend & Design Lead)
+* **Salami Saad**
+* **Tijani Abdelbarie**
+* **Fatima Ezzahra Arfaoui**
 
 ---
 
-## 🔧 Guide d'Installation (Pour le correcteur)
+## 💡 Concept & Vision
 
-Le projet tourne sous Python/Django. Voici comment le lancer chez vous en 3 étapes :
+Trouver un logement au Maroc (Rabat, Casablanca, Tanger...) est un défi majeur pour tout étudiant. Notre application, **StudentHouse**, a pour but de centraliser les offres de manière fiable et interactive.
+
+### Nos points forts :
+1.  **Réalisme des données** : Intégration des résidences réelles (*Bayt Al Maârifa*, *Ziraoui*, *Campus Universiapolis*...).
+2.  **Transparence** : Distinction claire entre les résidences officielles (Vérifiées) et les annonces de particuliers (Colocations).
+3.  **Respect culturel** : Filtrage strict par genre (**Filles / Garçons**), essentiel dans le contexte marocain.
+4.  **Interaction directe** : Mise en relation simplifiée via l'**API WhatsApp** avec les propriétaires.
+
+---
+
+## 🛠️ Guide d'Installation Rapide
 
 ### 1. Préparer l'environnement
 \\\ash
-# Dans le dossier du projet :
+# Activer l'environnement virtuel
 .\venv\Scripts\activate
+
+# Installer les outils nécessaires
 pip install -r requirements.txt
 \\\
 
-### 2. Charger les données (Important)
-Nous avons créé un script spécial pour ne pas livrer une coquille vide.
-Lancez ceci pour remplir le site avec nos exemples réels :
+### 2. Initialiser la Base de Données
+Nous avons inclus un script de "Seeding" pour charger des exemples concrets dès le premier lancement.
 \\\ash
 python manage.py makemigrations housing
 python manage.py migrate
 python seed.py
 \\\
 
-### 3. Lancer le site
+### 3. Lancer l'application
 \\\ash
 python manage.py runserver
 \\\
-👉 **http://127.0.0.1:8000/**
+Accès local : **http://127.0.0.1:8000/**
 
 ---
 
-## 📍 Ce qu'il faut tester
-* Connectez-vous (pseudo libre).
-* Allez sur la **Carte** pour voir la différence entre les résidences privées (Bleu) et les particuliers (Violet).
-* Essayez les **Filtres** (notamment le filtre "Filles/Garçons", très important au Maroc).
+## 🎨 Choix du Design
 
-Merci de nous lire !
+Nous avons opté pour un **Light Mode** minimaliste, inspiré des standards actuels (Airbnb, Apple). Ce choix permet une meilleure lisibilité des informations et met en valeur les photos des logements ainsi que la carte interactive (Leaflet.js).
+
+---
+*Projet réalisé avec passion par notre équipe à l'ENSA Tanger.*
