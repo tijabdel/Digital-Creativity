@@ -126,6 +126,19 @@ listings_data = [
 # 4. Injection
 print(f'🏗️ Création de {len(listings_data)} annonces (Mode Texte)...')
 
+images = [
+    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
+    "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200",
+    "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200",
+    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200",
+    "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1200",
+    "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1200",
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200",
+    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200",
+    "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200",
+    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200"
+]
+
 for data in listings_data:
     Listing.objects.create(
         title=data['title'],
@@ -137,8 +150,7 @@ for data in listings_data:
         lat=data['lat'],
         lng=data['lng'],
         owner_name=data['owner'],
-        # image_url supprimé ou vide pour ne pas avoir de photo
-        image_url='', 
+        image_url=random.choice(images),
         gender_preference=random.choice(['Mixte', 'Filles', 'Garçons'])
     )
     print(f"  ✅ Ajouté : {data['title']}")
